@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeChat Pay HK Design System - Examples</title>
+  <link rel="stylesheet" href="design-system.css">
+  <style>
+    body {
+      padding: 40px;
+      background-color: #f5f5f5;
+    }
+    .section {
+      background: white;
+      padding: 40px;
+      margin-bottom: 40px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .section-title {
+      font-size: 44px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      color: #000;
+    }
+    .section-subtitle {
+      font-size: 34px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      margin-top: 40px;
+      color: #000;
+    }
+    .demo-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .demo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .demo-label {
+      font-size: 22px;
+      color: rgba(0,0,0,0.5);
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 按钮组件示例 -->
+  <div class="section">
+    <h1 class="section-title">Button 按钮组件</h1>
+    
+    <h2 class="section-subtitle">基础按钮 (Basic Button)</h2>
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">Primary Large</span>
+        <button class="btn btn--primary btn--large">完成</button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Auxillary Large</span>
+        <button class="btn btn--auxillary btn--large">完成</button>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">按钮尺寸 (Button Sizes)</h2>
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">Large</span>
+        <button class="btn btn--primary btn--large">Large Button</button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Middle</span>
+        <button class="btn btn--primary btn--middle">Middle Button</button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Small</span>
+        <button class="btn btn--primary btn--small">Small Button</button>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">按钮状态 (Button Status)</h2>
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">Normal</span>
+        <button class="btn btn--primary btn--middle">Normal</button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Disabled</span>
+        <button class="btn btn--primary btn--middle btn--disabled" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">按钮主题 (Button Theme)</h2>
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">Default Primary</span>
+        <button class="btn btn--primary btn--middle">Default</button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Danger Primary</span>
+        <button class="btn btn--primary btn--danger btn--middle">Danger</button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Default Auxillary</span>
+        <button class="btn btn--auxillary btn--middle">Default</button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Danger Auxillary</span>
+        <button class="btn btn--auxillary btn--danger btn--middle">Danger</button>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">按钮组 (Button Group)</h2>
+    <div class="demo-group">
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">Horizontal Button Group</span>
+        <div class="btn-group">
+          <button class="btn btn--auxillary btn--middle">Button 1</button>
+          <button class="btn btn--primary btn--middle">Button 2</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 文本样式示例 -->
+  <div class="section">
+    <h1 class="section-title">Typography 文本样式</h1>
+    
+    <div class="demo-group" style="flex-direction: column; gap: 16px;">
+      <div class="demo-item">
+        <span class="demo-label">Text-01 (44px)</span>
+        <p class="text-01 text-medium">这是 Text-01 样式示例</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Text-02 (34px)</span>
+        <p class="text-02 text-medium">这是 Text-02 样式示例</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Text-03 (32px)</span>
+        <p class="text-03 text-medium">这是 Text-03 样式示例</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Text-04 (28px)</span>
+        <p class="text-04 text-medium">这是 Text-04 样式示例</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Text-05 (24px)</span>
+        <p class="text-05 text-medium">这是 Text-05 样式示例</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Text-06 (22px)</span>
+        <p class="text-06 text-medium">这是 Text-06 样式示例</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Text-07 (20px)</span>
+        <p class="text-07 text-medium">这是 Text-07 样式示例</p>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">文本颜色 (Text Colors)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 16px;">
+      <div class="demo-item">
+        <p class="text-02 text-brand">品牌色文本 (Brand Text)</p>
+      </div>
+      <div class="demo-item">
+        <p class="text-02 text-danger">危险色文本 (Danger Text)</p>
+      </div>
+      <div class="demo-item">
+        <p class="text-02 text-disabled">禁用文本 (Disabled Text)</p>
+      </div>
+      <div class="demo-item" style="background: #07c160; padding: 16px; border-radius: 8px;">
+        <p class="text-02 text-white">白色文本 (White Text)</p>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">英文字体样式 (English Font Styles)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 16px;">
+      <div class="demo-item">
+        <span class="demo-label">English Text-01 (42px)</span>
+        <p class="text-english-01 text-medium">This is English Text-01 example</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">English Text-02 (32px)</span>
+        <p class="text-english-02 text-medium">This is English Text-02 example</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">English Text-03 (30px)</span>
+        <p class="text-english-03 text-medium">This is English Text-03 example</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">English Text-04 (26px)</span>
+        <p class="text-english-04 text-medium">This is English Text-04 example</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">English Text-05 (22px)</span>
+        <p class="text-english-05 text-medium">This is English Text-05 example</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">English Text-06 (20px)</span>
+        <p class="text-english-06 text-medium">This is English Text-06 example</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">English Text-07 (18px)</span>
+        <p class="text-english-07 text-medium">This is English Text-07 example</p>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">数值字体样式 (Number Font Styles)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 16px;">
+      <div class="demo-item">
+        <span class="demo-label">Number Text-01 (44px)</span>
+        <p class="text-number-01 text-medium">HK$1,234.56</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Number Text-02 (34px)</span>
+        <p class="text-number-02 text-medium">HK$1,234.56</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Number Text-03 (32px)</span>
+        <p class="text-number-03 text-medium">HK$1,234.56</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Number Text-04 (28px)</span>
+        <p class="text-number-04 text-medium">HK$1,234.56</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Number Text-05 (24px)</span>
+        <p class="text-number-05 text-medium">HK$1,234.56</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Number Text-06 (22px)</span>
+        <p class="text-number-06 text-medium">HK$1,234.56</p>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Number Text-07 (20px)</span>
+        <p class="text-number-07 text-medium">HK$1,234.56</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 运营按钮示例 -->
+  <div class="section">
+    <h1 class="section-title">Operational Button 运营按钮</h1>
+    
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">Large</span>
+        <button class="operational-btn operational-btn--large">
+          <span class="operational-btn__text">按钮文案</span>
+        </button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Medium</span>
+        <button class="operational-btn operational-btn--medium">
+          <span class="operational-btn__text">按钮文案</span>
+        </button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Small</span>
+        <button class="operational-btn operational-btn--small">
+          <span class="operational-btn__icon">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider 分割线组件示例 -->
+  <div class="section">
+    <h1 class="section-title">Divider 分割线组件</h1>
+    
+    <h2 class="section-subtitle">水平分割线 (Horizontal Divider)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 16px;">
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">默认分割线</span>
+        <div>
+          <p>上方内容</p>
+          <hr class="divider">
+          <p>下方内容</p>
+        </div>
+      </div>
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">品牌色分割线</span>
+        <div>
+          <p>上方内容</p>
+          <hr class="divider divider--brand">
+          <p>下方内容</p>
+        </div>
+      </div>
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">危险色分割线</span>
+        <div>
+          <p>上方内容</p>
+          <hr class="divider divider--danger">
+          <p>下方内容</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">垂直分割线 (Vertical Divider)</h2>
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">垂直分割线</span>
+        <div style="display: flex; align-items: center; height: 60px;">
+          <span>左侧内容</span>
+          <hr class="divider divider--vertical" style="height: 40px; margin: 0 16px;">
+          <span>右侧内容</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs 选项卡组件示例 -->
+  <div class="section">
+    <h1 class="section-title">Tabs 选项卡组件</h1>
+    
+    <h2 class="section-subtitle">常规样式 - 白底</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 24px;">
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">常规选项卡（白底）</span>
+        <div class="tabs tabs--white">
+          <a href="#" class="tabs__item active">选项一</a>
+          <a href="#" class="tabs__item">选项二</a>
+          <a href="#" class="tabs__item">选项三</a>
+        </div>
+      </div>
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">常规选项卡（灰底）</span>
+        <div class="tabs tabs--gray">
+          <a href="#" class="tabs__item active">选项一</a>
+          <a href="#" class="tabs__item">选项二</a>
+          <a href="#" class="tabs__item">选项三</a>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">胶囊型样式</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 24px;">
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">胶囊型选项卡（白底）</span>
+        <div class="tabs tabs--capsule tabs--white">
+          <a href="#" class="tabs__item active">选项一</a>
+          <a href="#" class="tabs__item">选项二</a>
+          <a href="#" class="tabs__item">选项三</a>
+        </div>
+      </div>
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">胶囊型选项卡（灰底）</span>
+        <div class="tabs tabs--capsule tabs--gray">
+          <a href="#" class="tabs__item active">选项一</a>
+          <a href="#" class="tabs__item">选项二</a>
+          <a href="#" class="tabs__item">选项三</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Banner 组件示例 -->
+  <div class="section">
+    <h1 class="section-title">Banner 组件</h1>
+    
+    <div class="demo-group" style="flex-direction: column; gap: 24px;">
+      <div class="banner">
+        <div class="banner__content">
+          <h3 class="banner__title">主文案</h3>
+          <p class="banner__subtitle">副文案副文案副文案</p>
+        </div>
+        <div class="banner__action">
+          <button class="operational-btn operational-btn--medium">
+            <span class="operational-btn__text">按钮文案</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Picker 选择器组件示例 -->
+  <div class="section">
+    <h1 class="section-title">Picker 选择器组件</h1>
+    
+    <h2 class="section-subtitle">单列选择器 (Single Column Picker)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 24px;">
+      <div class="demo-item" style="width: 100%; max-width: 750px;">
+        <span class="demo-label">单列选择器</span>
+        <div class="picker picker--single-column" style="max-height: 600px;">
+          <div class="picker__header">
+            <button class="picker__close">
+              <svg class="picker__close-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <p class="picker__title">单列选择器</p>
+            <div class="picker__placeholder"></div>
+          </div>
+          <div class="picker__content">
+            <div class="picker__columns picker__columns--single">
+              <div class="picker__column">
+                <div class="picker__option">
+                  <span class="picker__option-text">近半年</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2025年1月</span>
+                </div>
+                <div class="picker__option picker__option--selected">
+                  <span class="picker__option-text">2024年12月</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2024年11月</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2024年10月</span>
+                </div>
+              </div>
+            </div>
+            <div class="picker__mask-top"></div>
+            <div class="picker__mask-bottom"></div>
+          </div>
+          <div class="picker__footer">
+            <button class="picker__confirm-btn">
+              <span class="picker__confirm-btn-text">确定</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">双列选择器 (Double Column Picker)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 24px;">
+      <div class="demo-item" style="width: 100%; max-width: 750px;">
+        <span class="demo-label">双列选择器</span>
+        <div class="picker picker--double-column" style="max-height: 600px;">
+          <div class="picker__header">
+            <button class="picker__close">
+              <svg class="picker__close-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <p class="picker__title">双列选择器</p>
+            <div class="picker__placeholder"></div>
+          </div>
+          <div class="picker__content">
+            <div class="picker__columns picker__columns--multi">
+              <div class="picker__column">
+                <div class="picker__option">
+                  <span class="picker__option-text">2022年</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2023年</span>
+                </div>
+                <div class="picker__option picker__option--selected">
+                  <span class="picker__option-text">2024年</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2025年</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2026年</span>
+                </div>
+              </div>
+              <div class="picker__column">
+                <div class="picker__option">
+                  <span class="picker__option-text">1月</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2月</span>
+                </div>
+                <div class="picker__option picker__option--selected">
+                  <span class="picker__option-text">3月</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">4月</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">10月</span>
+                </div>
+              </div>
+            </div>
+            <div class="picker__mask-top"></div>
+            <div class="picker__mask-bottom"></div>
+          </div>
+          <div class="picker__footer">
+            <button class="picker__confirm-btn">
+              <span class="picker__confirm-btn-text">确定</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">三列选择器 (Triple Column Picker)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 24px;">
+      <div class="demo-item" style="width: 100%; max-width: 750px;">
+        <span class="demo-label">三列选择器</span>
+        <div class="picker picker--triple-column" style="max-height: 600px;">
+          <div class="picker__header">
+            <button class="picker__close">
+              <svg class="picker__close-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <p class="picker__title">三列选择器</p>
+            <div class="picker__placeholder"></div>
+          </div>
+          <div class="picker__content">
+            <div class="picker__columns picker__columns--multi">
+              <div class="picker__column">
+                <div class="picker__option">
+                  <span class="picker__option-text">2022年</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2023年</span>
+                </div>
+                <div class="picker__option picker__option--selected">
+                  <span class="picker__option-text">2024年</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2025年</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2026年</span>
+                </div>
+              </div>
+              <div class="picker__column">
+                <div class="picker__option">
+                  <span class="picker__option-text">1月</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2月</span>
+                </div>
+                <div class="picker__option picker__option--selected">
+                  <span class="picker__option-text">3月</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">4月</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">5月</span>
+                </div>
+              </div>
+              <div class="picker__column">
+                <div class="picker__option">
+                  <span class="picker__option-text">1日</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">2日</span>
+                </div>
+                <div class="picker__option picker__option--selected">
+                  <span class="picker__option-text">3日</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">4日</span>
+                </div>
+                <div class="picker__option">
+                  <span class="picker__option-text">5日</span>
+                </div>
+              </div>
+            </div>
+            <div class="picker__mask-top"></div>
+            <div class="picker__mask-bottom"></div>
+          </div>
+          <div class="picker__footer">
+            <button class="picker__confirm-btn">
+              <span class="picker__confirm-btn-text">确定</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 步骤器组件示例 -->
+  <div class="section">
+    <h1 class="section-title">Step 步骤器组件</h1>
+    
+    <h2 class="section-subtitle">水平步骤器 (Horizontal Step)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 24px;">
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">流程步骤器 - 水平</span>
+        <div class="step step--horizontal step--process">
+          <div class="step__item step__item--completed">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--green">
+                <span class="step__icon-number-text">1</span>
+              </div>
+            </div>
+            <div class="step__line step__line--brand"></div>
+          </div>
+          <div class="step__item step__item--in-progress">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--green">
+                <span class="step__icon-number-text">2</span>
+              </div>
+            </div>
+            <div class="step__line step__line--brand"></div>
+          </div>
+          <div class="step__item step__item--pending">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--gray">
+                <span class="step__icon-number-text">3</span>
+              </div>
+            </div>
+            <div class="step__line"></div>
+          </div>
+          <div class="step__item step__item--pending">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--gray">
+                <span class="step__icon-number-text">4</span>
+              </div>
+            </div>
+            <div class="step__line step__line--hidden"></div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">状态指示器 - 水平</span>
+        <div class="step step--horizontal step--indicator">
+          <div class="step__item step__item--completed">
+            <div class="step__icon">
+              <div class="step__icon-done">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="step__line step__line--brand"></div>
+          </div>
+          <div class="step__item step__item--in-progress">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--green">
+                <span class="step__icon-number-text">2</span>
+              </div>
+            </div>
+            <div class="step__line"></div>
+          </div>
+          <div class="step__item step__item--pending">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--gray">
+                <span class="step__icon-number-text">3</span>
+              </div>
+            </div>
+            <div class="step__line step__line--hidden"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">垂直步骤器 (Vertical Step)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 24px;">
+      <div class="demo-item" style="width: 100%; max-width: 686px;">
+        <span class="demo-label">流程步骤器 - 垂直（已完成）</span>
+        <div class="step step--vertical step--process">
+          <div class="step__item step__item--completed">
+            <div class="step__icon">
+              <div class="step__icon-done">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+              </div>
+              <div class="step__line step__line--brand"></div>
+            </div>
+            <div class="step__content">
+              <div class="step__header">
+                <p class="step__title">标题</p>
+              </div>
+            </div>
+          </div>
+          <div class="step__item step__item--in-progress">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--green">
+                <span class="step__icon-number-text">2</span>
+              </div>
+              <div class="step__line"></div>
+            </div>
+            <div class="step__content">
+              <div class="step__header">
+                <p class="step__title">标题</p>
+                <p class="step__time">2020-4-15 17:23</p>
+              </div>
+            </div>
+          </div>
+          <div class="step__item step__item--pending">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--gray">
+                <span class="step__icon-number-text">3</span>
+              </div>
+              <div class="step__line step__line--hidden"></div>
+            </div>
+            <div class="step__content">
+              <div class="step__header">
+                <p class="step__title">标题</p>
+              </div>
+              <p class="step__summary">摘要信息摘要信息摘要信</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-item" style="width: 100%; max-width: 686px;">
+        <span class="demo-label">流程步骤器 - 垂直（标题+时间+摘要）</span>
+        <div class="step step--vertical step--process">
+          <div class="step__item step__item--completed">
+            <div class="step__icon">
+              <div class="step__icon-done">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+              </div>
+              <div class="step__line step__line--brand"></div>
+            </div>
+            <div class="step__content">
+              <div class="step__header step__header--column">
+                <p class="step__title">标题</p>
+                <p class="step__time">2020-4-15 17:23</p>
+              </div>
+              <p class="step__summary">摘要信息摘要信息摘要信</p>
+            </div>
+          </div>
+          <div class="step__item step__item--in-progress">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--green">
+                <span class="step__icon-number-text">2</span>
+              </div>
+              <div class="step__line"></div>
+            </div>
+            <div class="step__content">
+              <div class="step__header step__header--column">
+                <p class="step__title">标题</p>
+                <p class="step__time">2020-4-15 17:23</p>
+              </div>
+              <p class="step__summary">摘要信息摘要信息摘要信</p>
+            </div>
+          </div>
+          <div class="step__item step__item--pending">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--gray">
+                <span class="step__icon-number-text">3</span>
+              </div>
+              <div class="step__line step__line--hidden"></div>
+            </div>
+            <div class="step__content">
+              <div class="step__header step__header--column">
+                <p class="step__title">标题</p>
+                <p class="step__time">2020-4-15 17:23</p>
+              </div>
+              <p class="step__summary">摘要信息摘要信息摘要信</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-item" style="width: 100%; max-width: 686px;">
+        <span class="demo-label">状态指示器 - 垂直（时间图标）</span>
+        <div class="step step--vertical step--indicator">
+          <div class="step__item step__item--in-progress">
+            <div class="step__icon">
+              <div class="step__icon-other step__icon-other--time">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                </svg>
+              </div>
+              <div class="step__line"></div>
+            </div>
+            <div class="step__content">
+              <div class="step__header step__header--column">
+                <p class="step__title">标题</p>
+                <p class="step__time">2020-4-15 17:23</p>
+              </div>
+              <p class="step__summary">摘要信息摘要信息摘要信</p>
+            </div>
+          </div>
+          <div class="step__item step__item--pending">
+            <div class="step__icon">
+              <div class="step__icon-number step__icon-number--gray">
+                <span class="step__icon-number-text">2</span>
+              </div>
+              <div class="step__line step__line--hidden"></div>
+            </div>
+            <div class="step__content">
+              <div class="step__header step__header--column">
+                <p class="step__title">标题</p>
+                <p class="step__time">2020-4-15 17:23</p>
+              </div>
+              <p class="step__summary">摘要信息摘要信息摘要信</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 间距工具类示例 -->
+  <div class="section">
+    <h1 class="section-title">Spacing Utilities 间距工具类</h1>
+    
+    <div class="demo-group" style="flex-direction: column; gap: 16px;">
+      <div class="demo-item">
+        <span class="demo-label">Margin 010 (4px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-010);">Content</div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Margin 020 (8px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-020);">Content</div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Margin 030 (16px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-030);">Content</div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Margin 040 (24px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-040);">Content</div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Margin 050 (32px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-050);">Content</div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Margin 060 (40px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-060);">Content</div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Margin 070 (48px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-070);">Content</div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Margin 080 (64px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-080);">Content</div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Margin 090 (80px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-090);">Content</div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Margin 100 (96px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-100);">Content</div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Margin 110 (120px)</span>
+        <div style="background: #e6e6e6; display: inline-block;">
+          <div style="background: #07c160; color: white; padding: 8px; margin: var(--space-110);">Content</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">Padding 工具类 (Padding Utilities)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 16px;">
+      <div class="demo-item">
+        <span class="demo-label">Padding 010 (4px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-010); display: inline-block;">Content</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Padding 020 (8px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-020); display: inline-block;">Content</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Padding 030 (16px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-030); display: inline-block;">Content</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Padding 040 (24px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-040); display: inline-block;">Content</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Padding 050 (32px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-050); display: inline-block;">Content</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Padding 060 (40px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-060); display: inline-block;">Content</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Padding 070 (48px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-070); display: inline-block;">Content</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Padding 080 (64px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-080); display: inline-block;">Content</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Padding 090 (80px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-090); display: inline-block;">Content</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Padding 100 (96px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-100); display: inline-block;">Content</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Padding 110 (120px)</span>
+        <div style="background: #07c160; color: white; padding: var(--space-110); display: inline-block;">Content</div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">Gap 工具类 (Gap Utilities)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 16px;">
+      <div class="demo-item">
+        <span class="demo-label">Gap 010 (4px)</span>
+        <div style="display: flex; gap: var(--space-010);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Gap 020 (8px)</span>
+        <div style="display: flex; gap: var(--space-020);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Gap 030 (16px)</span>
+        <div style="display: flex; gap: var(--space-030);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Gap 040 (24px)</span>
+        <div style="display: flex; gap: var(--space-040);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Gap 050 (32px)</span>
+        <div style="display: flex; gap: var(--space-050);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Gap 060 (40px)</span>
+        <div style="display: flex; gap: var(--space-060);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Gap 070 (48px)</span>
+        <div style="display: flex; gap: var(--space-070);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Gap 080 (64px)</span>
+        <div style="display: flex; gap: var(--space-080);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Gap 090 (80px)</span>
+        <div style="display: flex; gap: var(--space-090);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Gap 100 (96px)</span>
+        <div style="display: flex; gap: var(--space-100);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Gap 110 (120px)</span>
+        <div style="display: flex; gap: var(--space-110);">
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+          <div style="width: 50px; height: 50px; background: #07c160;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 圆角工具类示例 -->
+  <div class="section">
+    <h1 class="section-title">Border Radius Utilities 圆角工具类</h1>
+    
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">Radius 010 (4px)</span>
+        <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-010);"></div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Radius 020 (8px)</span>
+        <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-020);"></div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Radius 030 (12px)</span>
+        <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-030);"></div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Radius 040 (16px)</span>
+        <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-040);"></div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Radius 050 (24px)</span>
+        <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-050);"></div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Radius 060 (32px)</span>
+        <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-060);"></div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Radius Full</span>
+        <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-full);"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 动效系统示例 -->
+  <div class="section">
+    <h1 class="section-title">Motion 动效系统</h1>
+    
+    <h2 class="section-subtitle">缓动曲线 (Easing Functions)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 24px; width: 100%; max-width: 800px;">
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">缓出 (Ease-Out) - cubic-bezier(0.33, 1, 0.68, 1)</span>
+        <div style="width: 100%; height: 60px; background: #f0f0f0; border-radius: 8px; position: relative; overflow: hidden;">
+          <div class="animate-slide-in-left" style="width: 50px; height: 50px; background: #07c160; border-radius: 50%; position: absolute; top: 5px; left: 0; transition: left 1s var(--easing-ease-out);" onmouseover="this.style.left='calc(100% - 55px)'" onmouseout="this.style.left='0'"></div>
+        </div>
+      </div>
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">缓入 (Ease-In) - cubic-bezier(0.11, 0, 0.5, 0)</span>
+        <div style="width: 100%; height: 60px; background: #f0f0f0; border-radius: 8px; position: relative; overflow: hidden;">
+          <div style="width: 50px; height: 50px; background: #fa5151; border-radius: 50%; position: absolute; top: 5px; left: 0; transition: left 1s var(--easing-ease-in);" onmouseover="this.style.left='calc(100% - 55px)'" onmouseout="this.style.left='0'"></div>
+        </div>
+      </div>
+      <div class="demo-item" style="width: 100%;">
+        <span class="demo-label">缓入缓出 (Ease-In-Out) - cubic-bezier(0.65, 0, 0.35, 1)</span>
+        <div style="width: 100%; height: 60px; background: #f0f0f0; border-radius: 8px; position: relative; overflow: hidden;">
+          <div style="width: 50px; height: 50px; background: #07c160; border-radius: 50%; position: absolute; top: 5px; left: 0; transition: left 1s var(--easing-ease-in-out);" onmouseover="this.style.left='calc(100% - 55px)'" onmouseout="this.style.left='0'"></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">展示类动效 (Display Animations)</h2>
+    <div class="demo-group" style="flex-wrap: wrap; gap: 24px;">
+      <div class="demo-item">
+        <span class="demo-label">淡入 (Fade In)</span>
+        <div class="animate-fade-in" style="width: 100px; height: 100px; background: #07c160; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">Fade</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">滑入 (Slide Up)</span>
+        <div class="animate-slide-up" style="width: 100px; height: 100px; background: #07c160; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">Slide</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">缩放 (Scale In)</span>
+        <div class="animate-scale-in" style="width: 100px; height: 100px; background: #07c160; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">Scale</div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">引导类动效 (Guidance Animations)</h2>
+    <div class="demo-group" style="flex-wrap: wrap; gap: 24px;">
+      <div class="demo-item">
+        <span class="demo-label">脉冲 (Pulse)</span>
+        <div class="animate-pulse" style="width: 100px; height: 100px; background: #07c160; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">Pulse</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">弹跳 (Bounce)</span>
+        <div class="animate-bounce" style="width: 100px; height: 100px; background: #07c160; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">Bounce</div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">闪烁 (Blink)</span>
+        <div class="animate-blink" style="width: 100px; height: 100px; background: #07c160; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">Blink</div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">反馈类动效 (Feedback Animations)</h2>
+    <div class="demo-group" style="flex-wrap: wrap; gap: 24px;">
+      <div class="demo-item">
+        <span class="demo-label">点击反馈</span>
+        <button class="btn btn--primary btn--middle animate-click-feedback" onclick="this.classList.add('animate-click-feedback'); setTimeout(() => this.classList.remove('animate-click-feedback'), 200);">点击我</button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">加载旋转</span>
+        <div class="animate-spin" style="width: 40px; height: 40px; border: 4px solid #f0f0f0; border-top-color: #07c160; border-radius: 50%;"></div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">动效时间 (Motion Duration)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 16px; width: 100%; max-width: 600px;">
+      <div class="demo-item">
+        <span class="demo-label">小尺寸UI组件: 100ms/200ms</span>
+        <div style="width: 100%; height: 40px; background: #f0f0f0; border-radius: 8px; position: relative; overflow: hidden;">
+          <div style="width: 30%; height: 100%; background: #07c160; transition: width var(--motion-duration-small-ui) var(--easing-ease-out);" onmouseover="this.style.width='100%'" onmouseout="this.style.width='30%'"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">中尺寸UI组件: 展开250ms / 收起200ms</span>
+        <div style="width: 100%; height: 40px; background: #f0f0f0; border-radius: 8px; position: relative; overflow: hidden;">
+          <div style="width: 30%; height: 100%; background: #07c160; transition: width var(--motion-duration-medium-ui-open) var(--easing-ease-out);" onmouseover="this.style.width='100%'" onmouseout="this.style.width='30%'"></div>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">大尺寸UI组件: 展开300ms / 收起250ms</span>
+        <div style="width: 100%; height: 40px; background: #f0f0f0; border-radius: 8px; position: relative; overflow: hidden;">
+          <div style="width: 30%; height: 100%; background: #07c160; transition: width var(--motion-duration-large-ui-open) var(--easing-ease-out);" onmouseover="this.style.width='100%'" onmouseout="this.style.width='30%'"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 图标库示例 -->
+  <div class="section">
+    <h1 class="section-title">Icon 图标库</h1>
+    
+    <h2 class="section-subtitle">图标尺寸 (Icon Sizes)</h2>
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">Small (24px)</span>
+        <div class="icon icon--small icon--primary" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Medium (48px)</span>
+        <div class="icon icon--medium icon--primary" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Large (64px)</span>
+        <div class="icon icon--large icon--primary" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">图标颜色 (Icon Colors)</h2>
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">Primary</span>
+        <div class="icon icon--medium icon--primary" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Brand</span>
+        <div class="icon icon--medium icon--brand" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Danger</span>
+        <div class="icon icon--medium icon--danger" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Disabled</span>
+        <div class="icon icon--medium icon--disabled" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">图标按钮 (Icon Button)</h2>
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">Small</span>
+        <button class="icon-btn icon-btn--small">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon--small icon--primary">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Medium</span>
+        <button class="icon-btn">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" class="icon icon--medium icon--primary">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Large</span>
+        <button class="icon-btn icon-btn--large">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor" class="icon icon--large icon--primary">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">图标与文本组合 (Icon with Text)</h2>
+    <div class="demo-group" style="flex-direction: column; gap: 16px;">
+      <div class="demo-item">
+        <div class="icon-with-text">
+          <div class="icon icon--medium icon--primary" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+            </svg>
+          </div>
+          <span class="text-04">图标与文本组合示例</span>
+        </div>
+      </div>
+      <div class="demo-item">
+        <div class="icon-with-text">
+          <div class="icon icon--small icon--brand" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+            </svg>
+          </div>
+          <span class="text-06">小图标与文本</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-subtitle">图标样式变体 (Icon Style Variants)</h2>
+    <div class="demo-group">
+      <div class="demo-item">
+        <span class="demo-label">Fill (填充)</span>
+        <div class="icon icon--medium icon--primary" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"/>
+          </svg>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-label">Outline (描边)</span>
+        <div class="icon icon--medium icon--primary icon--outline" style="background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+            <circle cx="12" cy="12" r="10"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

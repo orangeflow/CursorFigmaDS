@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeChat Pay HK Design System - Components Documentation</title>
+  <link rel="stylesheet" href="design-system.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family-chinese);
+      background-color: #f5f5f5;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* 左侧导航栏 */
+    .sidebar {
+      width: 280px;
+      background-color: #ffffff;
+      border-right: 1px solid var(--color-black-05);
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: var(--space-030);
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      padding-bottom: var(--space-030);
+      border-bottom: 1px solid var(--color-black-05);
+      margin-bottom: var(--space-030);
+    }
+
+    .sidebar-header h1 {
+      font-size: var(--font-size-text-02);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-black);
+      margin-bottom: var(--space-010);
+    }
+
+    .sidebar-header p {
+      font-size: var(--font-size-text-06);
+      color: var(--color-black-50);
+    }
+
+    /* 导航树 */
+    .nav-tree {
+      list-style: none;
+    }
+
+    .nav-tree-item {
+      margin-bottom: var(--space-010);
+    }
+
+    .nav-tree-link {
+      display: block;
+      padding: var(--space-020);
+      color: var(--color-black);
+      text-decoration: none;
+      border-radius: var(--radius-020);
+      font-size: var(--font-size-text-04);
+      transition: all var(--motion-duration-mobile-base) var(--easing-ease-out);
+    }
+
+    .nav-tree-link:hover {
+      background-color: var(--color-black-05);
+      color: var(--text-brand);
+    }
+
+    .nav-tree-link.active {
+      background-color: var(--color-brand-primary);
+      color: var(--color-white);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .nav-tree-sub {
+      list-style: none;
+      margin-left: var(--space-030);
+      margin-top: var(--space-010);
+      display: none;
+    }
+
+    .nav-tree-item.expanded .nav-tree-sub {
+      display: block;
+    }
+
+    .nav-tree-sub-link {
+      display: block;
+      padding: var(--space-010) var(--space-020);
+      color: var(--color-black-50);
+      text-decoration: none;
+      font-size: var(--font-size-text-06);
+      border-radius: var(--radius-020);
+      transition: all var(--motion-duration-mobile-base) var(--easing-ease-out);
+    }
+
+    .nav-tree-sub-link:hover {
+      background-color: var(--color-black-05);
+      color: var(--text-brand);
+    }
+
+    .nav-tree-sub-link.active {
+      color: var(--text-brand);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .nav-tree-toggle {
+      float: right;
+      font-size: 12px;
+      transition: transform var(--motion-duration-mobile-base) var(--easing-ease-out);
+    }
+
+    .nav-tree-item.expanded .nav-tree-toggle {
+      transform: rotate(90deg);
+    }
+
+    /* 主内容区 */
+    .main-content {
+      flex: 1;
+      margin-left: 280px;
+      padding: var(--space-050);
+      max-width: 1200px;
+    }
+
+    .component-section {
+      background: white;
+      border-radius: var(--radius-040);
+      padding: var(--space-050);
+      margin-bottom: var(--space-050);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: none;
+    }
+
+    .component-section.active {
+      display: block;
+      animation: fadeIn var(--motion-duration-mobile-medium) var(--easing-ease-out);
+    }
+
+    .component-section h1 {
+      font-size: var(--font-size-text-01);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-black);
+      margin-bottom: var(--space-030);
+      padding-bottom: var(--space-020);
+      border-bottom: 2px solid var(--color-brand-primary);
+    }
+
+    .component-section h2 {
+      font-size: var(--font-size-text-02);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-black);
+      margin-top: var(--space-050);
+      margin-bottom: var(--space-030);
+    }
+
+    .component-section h3 {
+      font-size: var(--font-size-text-03);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-black);
+      margin-top: var(--space-030);
+      margin-bottom: var(--space-020);
+    }
+
+    .component-description {
+      font-size: var(--font-size-text-04);
+      line-height: var(--line-height-text-04);
+      color: var(--color-black-50);
+      margin-bottom: var(--space-030);
+    }
+
+    .code-example {
+      background-color: #f8f9fa;
+      border: 1px solid var(--color-black-05);
+      border-radius: var(--radius-020);
+      padding: var(--space-030);
+      margin: var(--space-030) 0;
+      overflow-x: auto;
+    }
+
+    .code-example code {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 14px;
+      color: #333;
+      white-space: pre;
+    }
+
+    .demo-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-030);
+      margin: var(--space-030) 0;
+      padding: var(--space-030);
+      background-color: #fafafa;
+      border-radius: var(--radius-020);
+    }
+
+    .demo-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-010);
+    }
+
+    .demo-label {
+      font-size: var(--font-size-text-06);
+      color: var(--color-black-50);
+    }
+
+    .props-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-030) 0;
+    }
+
+    .props-table th,
+    .props-table td {
+      padding: var(--space-020);
+      text-align: left;
+      border-bottom: 1px solid var(--color-black-05);
+    }
+
+    .props-table th {
+      background-color: var(--color-black-05);
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-text-04);
+    }
+
+    .props-table td {
+      font-size: var(--font-size-text-06);
+    }
+
+    .props-table code {
+      background-color: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: var(--text-brand);
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform var(--motion-duration-mobile-medium) var(--easing-ease-out);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: var(--space-030);
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+        position: fixed;
+        top: var(--space-020);
+        left: var(--space-020);
+        z-index: 101;
+        background: var(--color-brand-primary);
+        color: white;
+        border: none;
+        padding: var(--space-020);
+        border-radius: var(--radius-020);
+        cursor: pointer;
+      }
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+    }
+
+    /* 搜索框 */
+    .search-box {
+      margin-bottom: var(--space-030);
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: var(--space-020);
+      border: 1px solid var(--color-black-05);
+      border-radius: var(--radius-020);
+      font-size: var(--font-size-text-06);
+      font-family: var(--font-family-chinese);
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--color-brand-primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- 移动端菜单按钮 -->
+  <button class="mobile-menu-toggle" onclick="toggleSidebar()">☰</button>
+
+  <!-- 左侧导航栏 -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h1>设计系统</h1>
+      <p>WeChat Pay HK</p>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="搜索组件..." oninput="filterComponents()">
+    </div>
+
+    <ul class="nav-tree" id="navTree">
+      <li class="nav-tree-item">
+        <a href="#overview" class="nav-tree-link" onclick="showSection('overview'); return false;">
+          概览 Overview
+        </a>
+      </li>
+
+      <li class="nav-tree-item">
+        <a href="#design-tokens" class="nav-tree-link" onclick="toggleSubmenu(this); return false;">
+          设计令牌 Design Tokens
+          <span class="nav-tree-toggle">▶</span>
+        </a>
+        <ul class="nav-tree-sub">
+          <li><a href="#colors" class="nav-tree-sub-link" onclick="showSection('colors'); return false;">颜色 Colors</a></li>
+          <li><a href="#typography" class="nav-tree-sub-link" onclick="showSection('typography'); return false;">字体 Typography</a></li>
+          <li><a href="#spacing" class="nav-tree-sub-link" onclick="showSection('spacing'); return false;">间距 Spacing</a></li>
+          <li><a href="#radius" class="nav-tree-sub-link" onclick="showSection('radius'); return false;">圆角 Border Radius</a></li>
+          <li><a href="#motion" class="nav-tree-sub-link" onclick="showSection('motion'); return false;">动效 Motion</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-tree-item">
+        <a href="#components" class="nav-tree-link" onclick="toggleSubmenu(this); return false;">
+          组件 Components
+          <span class="nav-tree-toggle">▶</span>
+        </a>
+        <ul class="nav-tree-sub">
+          <li><a href="#button" class="nav-tree-sub-link" onclick="showSection('button'); return false;">按钮 Button</a></li>
+          <li><a href="#operational-button" class="nav-tree-sub-link" onclick="showSection('operational-button'); return false;">运营按钮 Operational Button</a></li>
+          <li><a href="#banner" class="nav-tree-sub-link" onclick="showSection('banner'); return false;">Banner</a></li>
+          <li><a href="#divider" class="nav-tree-sub-link" onclick="showSection('divider'); return false;">分割线 Divider</a></li>
+          <li><a href="#tabs" class="nav-tree-sub-link" onclick="showSection('tabs'); return false;">选项卡 Tabs</a></li>
+          <li><a href="#picker" class="nav-tree-sub-link" onclick="showSection('picker'); return false;">选择器 Picker</a></li>
+          <li><a href="#step" class="nav-tree-sub-link" onclick="showSection('step'); return false;">步骤器 Step</a></li>
+          <li><a href="#icon" class="nav-tree-sub-link" onclick="showSection('icon'); return false;">图标库 Icon Library</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-tree-item">
+        <a href="#utilities" class="nav-tree-link" onclick="toggleSubmenu(this); return false;">
+          工具类 Utilities
+          <span class="nav-tree-toggle">▶</span>
+        </a>
+        <ul class="nav-tree-sub">
+          <li><a href="#spacing-utilities" class="nav-tree-sub-link" onclick="showSection('spacing-utilities'); return false;">间距工具类</a></li>
+          <li><a href="#layout-utilities" class="nav-tree-sub-link" onclick="showSection('layout-utilities'); return false;">布局工具类</a></li>
+          <li><a href="#text-utilities" class="nav-tree-sub-link" onclick="showSection('text-utilities'); return false;">文本工具类</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 概览 -->
+    <section id="overview" class="component-section active">
+      <h1>概览 Overview</h1>
+      <div class="component-description">
+        <p>WeChat Pay HK 设计系统是一个完整的 CSS 设计系统规范，基于 Figma 设计系统生成。本系统提供了完整的组件样式、设计令牌和工具类，帮助开发者快速构建符合设计规范的界面。</p>
+      </div>
+
+      <h2>快速开始</h2>
+      <div class="code-example">
+        <code>&lt;link rel="stylesheet" href="design-system.css"&gt;</code>
+      </div>
+
+      <h2>文件结构</h2>
+      <ul style="margin-left: var(--space-030); line-height: 2;">
+        <li><code>design-system.css</code> - 设计系统 CSS 主文件</li>
+        <li><code>design-system-examples.html</code> - 组件使用示例</li>
+        <li><code>components-documentation.html</code> - 组件文档（本文件）</li>
+        <li><code>README.md</code> - 使用文档</li>
+      </ul>
+    </section>
+
+    <!-- 颜色系统 -->
+    <section id="colors" class="component-section">
+      <h1>颜色系统 Colors</h1>
+      <div class="component-description">
+        <p>设计系统的颜色规范，包括品牌色、危险色和中性色。</p>
+      </div>
+
+      <h2>品牌色 (Brand Colors)</h2>
+      <div class="demo-group">
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: var(--color-brand-primary); border-radius: 8px;"></div>
+          <span class="demo-label">Primary<br>#07c160</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: var(--color-brand-primary-disabled); border-radius: 8px;"></div>
+          <span class="demo-label">Primary Disabled<br>rgba(7, 193, 96, 0.5)</span>
+        </div>
+      </div>
+
+      <h2>危险色 (Danger Colors)</h2>
+      <div class="demo-group">
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: var(--color-danger); border-radius: 8px;"></div>
+          <span class="demo-label">Danger<br>#fa5151</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: var(--color-danger-disabled); border-radius: 8px;"></div>
+          <span class="demo-label">Danger Disabled<br>rgba(250, 81, 81, 0.5)</span>
+        </div>
+      </div>
+
+      <h2>中性色 (Neutral Colors)</h2>
+      <div class="demo-group">
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: var(--color-white); border: 1px solid #e0e0e0; border-radius: 8px;"></div>
+          <span class="demo-label">White<br>#ffffff</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: var(--color-black); border-radius: 8px;"></div>
+          <span class="demo-label">Black<br>#000000</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: var(--color-black-05); border-radius: 8px;"></div>
+          <span class="demo-label">Black 05<br>rgba(0,0,0,0.05)</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: var(--color-black-10); border-radius: 8px;"></div>
+          <span class="demo-label">Black 10<br>rgba(0,0,0,0.1)</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: var(--color-black-50); border-radius: 8px;"></div>
+          <span class="demo-label">Black 50<br>rgba(0,0,0,0.5)</span>
+        </div>
+      </div>
+
+      <h2>CSS 变量</h2>
+      <div class="code-example">
+        <code>--color-brand-primary: #07c160;
+--color-brand-primary-disabled: rgba(7, 193, 96, 0.5);
+--color-danger: #fa5151;
+--color-danger-disabled: rgba(250, 81, 81, 0.5);
+--color-white: #ffffff;
+--color-black: #000000;
+--color-black-05: rgba(0, 0, 0, 0.05);
+--color-black-10: rgba(0, 0, 0, 0.1);
+--color-black-50: rgba(0, 0, 0, 0.5);</code>
+      </div>
+    </section>
+
+    <!-- 字体系统 -->
+    <section id="typography" class="component-section">
+      <h1>字体系统 Typography</h1>
+      <div class="component-description">
+        <p>设计系统的字体规范，包括字体族、字体大小、行高和字重。</p>
+      </div>
+
+      <h2>字体大小 (Font Sizes)</h2>
+      <div class="demo-group" style="flex-direction: column; gap: var(--space-020);">
+        <div>
+          <p class="text-01 text-medium">Text-01 (44px) - 标题文字</p>
+        </div>
+        <div>
+          <p class="text-02 text-medium">Text-02 (34px) - 正文文字</p>
+        </div>
+        <div>
+          <p class="text-03 text-medium">Text-03 (32px) - 次要文字</p>
+        </div>
+        <div>
+          <p class="text-04 text-medium">Text-04 (28px) - 辅助文字</p>
+        </div>
+        <div>
+          <p class="text-05 text-medium">Text-05 (24px) - 辅助文字</p>
+        </div>
+        <div>
+          <p class="text-06 text-medium">Text-06 (22px) - 说明文字</p>
+        </div>
+        <div>
+          <p class="text-07 text-medium">Text-07 (20px) - 说明文字</p>
+        </div>
+      </div>
+
+      <h2>英文字体样式 (English Font Styles)</h2>
+      <div class="demo-group" style="flex-direction: column; gap: var(--space-020);">
+        <div>
+          <p class="text-english-01 text-medium">English Text-01 (42px) - Title Text</p>
+        </div>
+        <div>
+          <p class="text-english-02 text-medium">English Text-02 (32px) - Body Text</p>
+        </div>
+        <div>
+          <p class="text-english-03 text-medium">English Text-03 (30px) - Secondary Text</p>
+        </div>
+        <div>
+          <p class="text-english-04 text-medium">English Text-04 (26px) - Auxiliary Text</p>
+        </div>
+        <div>
+          <p class="text-english-05 text-medium">English Text-05 (22px) - Auxiliary Text</p>
+        </div>
+        <div>
+          <p class="text-english-06 text-medium">English Text-06 (20px) - Caption Text</p>
+        </div>
+        <div>
+          <p class="text-english-07 text-medium">English Text-07 (18px) - Caption Text</p>
+        </div>
+      </div>
+
+      <h2>数值字体样式 (Number Font Styles)</h2>
+      <div class="demo-group" style="flex-direction: column; gap: var(--space-020);">
+        <div>
+          <p class="text-number-01 text-medium">HK$1,234.56</p>
+          <span style="font-size: 22px; color: rgba(0,0,0,0.5);">Number Text-01 (44px)</span>
+        </div>
+        <div>
+          <p class="text-number-02 text-medium">HK$1,234.56</p>
+          <span style="font-size: 22px; color: rgba(0,0,0,0.5);">Number Text-02 (34px)</span>
+        </div>
+        <div>
+          <p class="text-number-03 text-medium">HK$1,234.56</p>
+          <span style="font-size: 22px; color: rgba(0,0,0,0.5);">Number Text-03 (32px)</span>
+        </div>
+        <div>
+          <p class="text-number-04 text-medium">HK$1,234.56</p>
+          <span style="font-size: 22px; color: rgba(0,0,0,0.5);">Number Text-04 (28px)</span>
+        </div>
+        <div>
+          <p class="text-number-05 text-medium">HK$1,234.56</p>
+          <span style="font-size: 22px; color: rgba(0,0,0,0.5);">Number Text-05 (24px)</span>
+        </div>
+        <div>
+          <p class="text-number-06 text-medium">HK$1,234.56</p>
+          <span style="font-size: 22px; color: rgba(0,0,0,0.5);">Number Text-06 (22px)</span>
+        </div>
+        <div>
+          <p class="text-number-07 text-medium">HK$1,234.56</p>
+          <span style="font-size: 22px; color: rgba(0,0,0,0.5);">Number Text-07 (20px)</span>
+        </div>
+      </div>
+
+      <h2>字重 (Font Weights)</h2>
+      <div class="demo-group" style="flex-direction: column; gap: var(--space-020);">
+        <div>
+          <p class="text-02 text-regular">Regular (400) - 常规字重</p>
+        </div>
+        <div>
+          <p class="text-02 text-medium">Medium (500) - 中等字重</p>
+        </div>
+        <div>
+          <p class="text-02 text-semibold">Semibold (600) - 半粗字重</p>
+        </div>
+      </div>
+
+      <h2>CSS 变量</h2>
+      <div class="code-example">
+        <pre><code>/* 中文字体 */
+--font-family-chinese: 'PingFang_HK', 'PingFang_SC', ...;
+--font-size-text-01: 44px;
+--font-size-text-02: 34px;
+--font-size-text-03: 32px;
+--font-size-text-04: 28px;
+--font-size-text-05: 24px;
+--font-size-text-06: 22px;
+--font-size-text-07: 20px;
+
+/* 英文字体 */
+--font-family-english: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+--font-size-english-text-01: 42px;
+--font-size-english-text-02: 32px;
+--font-size-english-text-03: 30px;
+--font-size-english-text-04: 26px;
+--font-size-english-text-05: 22px;
+--font-size-english-text-06: 20px;
+--font-size-english-text-07: 18px;
+
+/* 数值字体 */
+--font-family-number: 'WeChat Sans Std', 'PingFang_HK', ...;
+--font-size-number-text-01: 44px; /* 与中文字体相同 */
+--font-size-number-text-02: 34px;
+--font-size-number-text-03: 32px;
+--font-size-number-text-04: 28px;
+--font-size-number-text-05: 24px;
+--font-size-number-text-06: 22px;
+--font-size-number-text-07: 20px;
+
+/* 字重 */
+--font-weight-regular: 400;
+--font-weight-medium: 500;
+--font-weight-semibold: 600;</code></pre>
+      </div>
+    </section>
+
+    <!-- 间距系统 -->
+    <section id="spacing" class="component-section">
+      <h1>间距系统 Spacing</h1>
+      <div class="component-description">
+        <p>设计系统的间距规范，使用 4px 基础单位。</p>
+      </div>
+
+      <h2>间距值</h2>
+      <div class="demo-group">
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-010); background: #07c160;"></div>
+          <span class="demo-label">Space 010<br>4px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-020); background: #07c160;"></div>
+          <span class="demo-label">Space 020<br>8px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-030); background: #07c160;"></div>
+          <span class="demo-label">Space 030<br>16px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-040); background: #07c160;"></div>
+          <span class="demo-label">Space 040<br>24px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-050); background: #07c160;"></div>
+          <span class="demo-label">Space 050<br>32px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-060); background: #07c160;"></div>
+          <span class="demo-label">Space 060<br>40px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-070); background: #07c160;"></div>
+          <span class="demo-label">Space 070<br>48px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-080); background: #07c160;"></div>
+          <span class="demo-label">Space 080<br>64px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-090); background: #07c160;"></div>
+          <span class="demo-label">Space 090<br>80px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-100); background: #07c160;"></div>
+          <span class="demo-label">Space 100<br>96px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: var(--space-110); background: #07c160;"></div>
+          <span class="demo-label">Space 110<br>120px</span>
+        </div>
+      </div>
+
+      <h2>CSS 变量</h2>
+      <div class="code-example">
+        <code>--space-010: 4px;    /* 组件场景使用，例如选项卡、标签等小型元素之间的间隔 */
+--space-020: 8px;    /* 组件场景使用，例如按钮、徽标、单元格、页脚、小标题之间的间隔 */
+--space-030: 16px;   /* 组件场景使用，例如选项卡、表单、协议、多选框、单选框 */
+--space-040: 24px;   /* 组件场景使用，例如步骤器、侧边栏 */
+--space-050: 32px;   /* 组件场景使用，例如步骤器、输入框 */
+--space-060: 40px;   /* 组件场景使用，例如半屏弹层顶部 */
+--space-070: 48px;   /* 组件场景使用，例如结果页 */
+--space-080: 64px;   /* 组件场景使用，例如对话框、半屏弹层 */
+--space-090: 80px;   /* 组件场景使用，例如半屏弹层、结果页操作区 */
+--space-100: 96px;   /* 组件场景使用，例如结果页 */
+--space-110: 120px;  /* 半屏弹层顶部与导航栏底部需保持120px及以上间距 */</code>
+      </div>
+    </section>
+
+    <!-- 圆角系统 -->
+    <section id="radius" class="component-section">
+      <h1>圆角系统 Border Radius</h1>
+      <div class="component-description">
+        <p>设计系统的圆角规范。</p>
+      </div>
+
+      <h2>圆角值</h2>
+      <div class="demo-group">
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-010);"></div>
+          <span class="demo-label">Radius 010<br>4px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-020);"></div>
+          <span class="demo-label">Radius 020<br>8px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-030);"></div>
+          <span class="demo-label">Radius 030<br>12px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-040);"></div>
+          <span class="demo-label">Radius 040<br>16px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-050);"></div>
+          <span class="demo-label">Radius 050<br>24px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-060);"></div>
+          <span class="demo-label">Radius 060<br>32px</span>
+        </div>
+        <div class="demo-item">
+          <div style="width: 100px; height: 100px; background: #07c160; border-radius: var(--radius-full);"></div>
+          <span class="demo-label">Radius Full<br>9999px</span>
+        </div>
+      </div>
+
+      <h2>CSS 变量</h2>
+      <div class="code-example">
+        <code>--radius-010: 4px;   /* 极小场景使用，例如标签 */
+--radius-020: 8px;   /* 组件场景使用，例如按钮 */
+--radius-030: 12px;  /* 组件场景使用 */
+--radius-040: 16px;  /* 组件场景使用，例如向导提示、公告栏 */
+--radius-050: 24px;  /* 组件场景使用，例如半屏弹层、轻提示 */
+--radius-060: 32px;  /* 组件场景使用 */
+--radius-full: 9999px; /* 胶囊型组件使用 */</code>
+      </div>
+    </section>
+
+    <!-- 动效系统 -->
+    <section id="motion" class="component-section">
+      <h1>动效系统 Motion</h1>
+      <div class="component-description">
+        <p>设计系统的动效规范，包括时间系统和缓动曲线。</p>
+      </div>
+
+      <h2>动效时间</h2>
+      <table class="props-table">
+        <thead>
+          <tr>
+            <th>类型</th>
+            <th>变量名</th>
+            <th>值</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>移动设备</td>
+            <td><code>--motion-duration-mobile-base</code></td>
+            <td>200ms</td>
+            <td>基础动效时间</td>
+          </tr>
+          <tr>
+            <td>移动设备</td>
+            <td><code>--motion-duration-mobile-medium</code></td>
+            <td>250ms</td>
+            <td>中等动效时间</td>
+          </tr>
+          <tr>
+            <td>移动设备</td>
+            <td><code>--motion-duration-mobile-large</code></td>
+            <td>300ms</td>
+            <td>大动效时间</td>
+          </tr>
+          <tr>
+            <td>小尺寸UI</td>
+            <td><code>--motion-duration-small-ui</code></td>
+            <td>100ms</td>
+            <td>开关、勾选等</td>
+          </tr>
+          <tr>
+            <td>中尺寸UI</td>
+            <td><code>--motion-duration-medium-ui-open</code></td>
+            <td>250ms</td>
+            <td>菜单弹层展开</td>
+          </tr>
+          <tr>
+            <td>大尺寸UI</td>
+            <td><code>--motion-duration-large-ui-open</code></td>
+            <td>300ms</td>
+            <td>全局弹层展开</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>缓动曲线</h2>
+      <table class="props-table">
+        <thead>
+          <tr>
+            <th>类型</th>
+            <th>变量名</th>
+            <th>值</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>线性</td>
+            <td><code>--easing-linear</code></td>
+            <td>linear</td>
+            <td>无缓动，用于色彩、hover状态</td>
+          </tr>
+          <tr>
+            <td>缓出</td>
+            <td><code>--easing-ease-out</code></td>
+            <td>cubic-bezier(0.33, 1, 0.68, 1)</td>
+            <td>快速响应，自然结束</td>
+          </tr>
+          <tr>
+            <td>缓入</td>
+            <td><code>--easing-ease-in</code></td>
+            <td>cubic-bezier(0.11, 0, 0.5, 0)</td>
+            <td>慢速开始，加速离开</td>
+          </tr>
+          <tr>
+            <td>缓入缓出</td>
+            <td><code>--easing-ease-in-out</code></td>
+            <td>cubic-bezier(0.65, 0, 0.35, 1)</td>
+            <td>持续在视线内的元素</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 按钮组件 -->
+    <section id="button" class="component-section">
+      <h1>按钮 Button</h1>
+      <div class="component-description">
+        <p>按钮用于开启一个闭环的操作任务。支持多种尺寸、类型、主题和状态。</p>
+      </div>
+
+      <h2>基础用法</h2>
+      <div class="code-example">
+        <code>&lt;button class="btn btn--primary btn--large"&gt;完成&lt;/button&gt;
+&lt;button class="btn btn--auxillary btn--middle"&gt;取消&lt;/button&gt;</code>
+      </div>
+
+      <h2>尺寸 (Sizes)</h2>
+      <div class="demo-group">
+        <div class="demo-item">
+          <button class="btn btn--primary btn--large">Large</button>
+          <span class="demo-label">Large (80px)</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn--primary btn--middle">Middle</button>
+          <span class="demo-label">Middle (64px)</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn--primary btn--small">Small</button>
+          <span class="demo-label">Small (56px)</span>
+        </div>
+      </div>
+
+      <h2>类型 (Types)</h2>
+      <div class="demo-group">
+        <div class="demo-item">
+          <button class="btn btn--primary btn--middle">Primary</button>
+          <span class="demo-label">主要按钮</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn--auxillary btn--middle">Auxillary</button>
+          <span class="demo-label">辅助按钮</span>
+        </div>
+      </div>
+
+      <h2>主题 (Themes)</h2>
+      <div class="demo-group">
+        <div class="demo-item">
+          <button class="btn btn--primary btn--middle">Default</button>
+          <span class="demo-label">默认主题</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn--primary btn--danger btn--middle">Danger</button>
+          <span class="demo-label">危险主题</span>
+        </div>
+      </div>
+
+      <h2>状态 (States)</h2>
+      <div class="demo-group">
+        <div class="demo-item">
+          <button class="btn btn--primary btn--middle">Normal</button>
+          <span class="demo-label">正常状态</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn--primary btn--middle" disabled>Disabled</button>
+          <span class="demo-label">禁用状态</span>
+        </div>
+      </div>
+
+      <h2>属性 (Props)</h2>
+      <table class="props-table">
+        <thead>
+          <tr>
+            <th>属性</th>
+            <th>值</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>btn--large</code></td>
+            <td>-</td>
+            <td>大尺寸按钮 (80px 高)</td>
+          </tr>
+          <tr>
+            <td><code>btn--middle</code></td>
+            <td>-</td>
+            <td>中等尺寸按钮 (64px 高)</td>
+          </tr>
+          <tr>
+            <td><code>btn--small</code></td>
+            <td>-</td>
+            <td>小尺寸按钮 (56px 高)</td>
+          </tr>
+          <tr>
+            <td><code>btn--primary</code></td>
+            <td>-</td>
+            <td>主要按钮类型</td>
+          </tr>
+          <tr>
+            <td><code>btn--auxillary</code></td>
+            <td>-</td>
+            <td>辅助按钮类型</td>
+          </tr>
+          <tr>
+            <td><code>btn--danger</code></td>
+            <td>-</td>
+            <td>危险主题</td>
+          </tr>
+          <tr>
+            <td><code>btn--disabled</code></td>
+            <td>-</td>
+            <td>禁用状态（或使用 disabled 属性）</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 运营按钮 -->
+    <section id="operational-button" class="component-section">
+      <h1>运营按钮 Operational Button</h1>
+      <div class="component-description">
+        <p>运营按钮应用于 Banner 之上，无需开发介入（设计层面处理）。</p>
+      </div>
+
+      <h2>基础用法</h2>
+      <div class="code-example">
+        <code>&lt;button class="operational-btn operational-btn--medium"&gt;
+  &lt;span class="operational-btn__text"&gt;按钮文案&lt;/span&gt;
+&lt;/button&gt;</code>
+      </div>
+
+      <h2>尺寸</h2>
+      <div class="demo-group">
+        <div class="demo-item">
+          <button class="operational-btn operational-btn--large">
+            <span class="operational-btn__text">Large</span>
+          </button>
+          <span class="demo-label">Large (64px)</span>
+        </div>
+        <div class="demo-item">
+          <button class="operational-btn operational-btn--medium">
+            <span class="operational-btn__text">Medium</span>
+          </button>
+          <span class="demo-label">Medium (40px)</span>
+        </div>
+        <div class="demo-item">
+          <button class="operational-btn operational-btn--small">
+            <span class="operational-btn__icon">→</span>
+          </button>
+          <span class="demo-label">Small (32px)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner 组件 -->
+    <section id="banner" class="component-section">
+      <h1>Banner 组件</h1>
+      <div class="component-description">
+        <p>Banner 组件用于展示重要信息和操作入口。</p>
+      </div>
+
+      <h2>基础用法</h2>
+      <div class="code-example">
+        <code>&lt;div class="banner"&gt;
+  &lt;div class="banner__content"&gt;
+    &lt;h3 class="banner__title"&gt;主文案&lt;/h3&gt;
+    &lt;p class="banner__subtitle"&gt;副文案副文案副文案&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="banner__action"&gt;
+    &lt;button class="operational-btn operational-btn--medium"&gt;
+      &lt;span class="operational-btn__text"&gt;按钮文案&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+      </div>
+
+      <h2>示例</h2>
+      <div class="demo-group" style="flex-direction: column;">
+        <div class="banner">
+          <div class="banner__content">
+            <h3 class="banner__title">主文案</h3>
+            <p class="banner__subtitle">副文案副文案副文案</p>
+          </div>
+          <div class="banner__action">
+            <button class="operational-btn operational-btn--medium">
+              <span class="operational-btn__text">按钮文案</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 间距工具类 -->
+    <section id="spacing-utilities" class="component-section">
+      <h1>间距工具类 Spacing Utilities</h1>
+      <div class="component-description">
+        <p>快速设置 margin 和 padding 的工具类。</p>
+      </div>
+
+      <h2>Margin</h2>
+      <div class="code-example">
+        <code>.m-010 { margin: var(--space-010); }
+.m-020 { margin: var(--space-020); }
+.m-030 { margin: var(--space-030); }
+.m-050 { margin: var(--space-050); }
+
+.mt-010, .mt-020, .mt-030, .mt-050 { margin-top: ...; }
+.mr-010, .mr-020, .mr-030, .mr-050 { margin-right: ...; }
+.mb-010, .mb-020, .mb-030, .mb-050 { margin-bottom: ...; }
+.ml-010, .ml-020, .ml-030, .ml-050 { margin-left: ...; }</code>
+      </div>
+
+      <h2>Padding</h2>
+      <div class="code-example">
+        <code>.p-010 { padding: var(--space-010); }
+.p-020 { padding: var(--space-020); }
+.p-030 { padding: var(--space-030); }
+.p-050 { padding: var(--space-050); }
+
+.pt-010, .pt-020, .pt-030, .pt-050 { padding-top: ...; }
+.pr-010, .pr-020, .pr-030, .pr-050 { padding-right: ...; }
+.pb-010, .pb-020, .pb-030, .pb-050 { padding-bottom: ...; }
+.pl-010, .pl-020, .pl-030, .pl-050 { padding-left: ...; }</code>
+      </div>
+    </section>
+
+    <!-- 布局工具类 -->
+    <section id="layout-utilities" class="component-section">
+      <h1>布局工具类 Layout Utilities</h1>
+      <div class="component-description">
+        <p>快速设置布局的工具类。</p>
+      </div>
+
+      <h2>Flexbox</h2>
+      <h2>Gap 间距</h2>
+      <div class="code-example">
+        <code>.gap-010 { gap: var(--space-010); }  /* 4px */
+.gap-020 { gap: var(--space-020); }  /* 8px */
+.gap-030 { gap: var(--space-030); }  /* 16px */
+.gap-040 { gap: var(--space-040); }  /* 24px */
+.gap-050 { gap: var(--space-050); }  /* 32px */
+.gap-060 { gap: var(--space-060); }  /* 40px */
+.gap-070 { gap: var(--space-070); }  /* 48px */
+.gap-080 { gap: var(--space-080); }  /* 64px */
+.gap-090 { gap: var(--space-090); }  /* 80px */
+.gap-100 { gap: var(--space-100); }  /* 96px */
+.gap-110 { gap: var(--space-110); }  /* 120px */</code>
+      </div>
+
+      <h2>其他布局工具类</h2>
+      <div class="code-example">
+        <code>.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }</code>
+      </div>
+    </section>
+
+    <!-- 文本工具类 -->
+    <section id="text-utilities" class="component-section">
+      <h1>文本工具类 Text Utilities</h1>
+      <div class="component-description">
+        <p>快速设置文本样式的工具类。</p>
+      </div>
+
+      <h2>对齐</h2>
+      <div class="code-example">
+        <code>.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }</code>
+      </div>
+
+      <h2>截断</h2>
+      <div class="code-example">
+        <code>.text-ellipsis { /* 单行省略 */ }
+.text-clamp-2 { /* 两行省略 */ }
+.text-clamp-3 { /* 三行省略 */ }</code>
+      </div>
+    </section>
+
+    <!-- Divider 分割线组件 -->
+    <section id="divider" class="component-section">
+      <h1>分割线 Divider</h1>
+      <div class="component-description">
+        <p>用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。</p>
+      </div>
+
+      <h2>水平分割线 (Horizontal Divider)</h2>
+      <div class="code-example">
+        <pre><code>&lt;div&gt;
+  &lt;p&gt;上方内容&lt;/p&gt;
+  &lt;hr class="divider"&gt;
+  &lt;p&gt;下方内容&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>垂直分割线 (Vertical Divider)</h2>
+      <div class="code-example">
+        <pre><code>&lt;div style="display: flex; align-items: center;"&gt;
+  &lt;span&gt;左侧内容&lt;/span&gt;
+  &lt;hr class="divider divider--vertical" style="height: 40px; margin: 0 16px;"&gt;
+  &lt;span&gt;右侧内容&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>分割线变体</h2>
+      <div class="code-example">
+        <pre><code>&lt;hr class="divider divider--brand"&gt;  /* 品牌色分割线 */
+&lt;hr class="divider divider--danger"&gt;  /* 危险色分割线 */</code></pre>
+      </div>
+    </section>
+
+    <!-- Tabs 选项卡组件 -->
+    <section id="tabs" class="component-section">
+      <h1>选项卡 Tabs</h1>
+      <div class="component-description">
+        <p>用于选择一个时间点或者一个时间段。</p>
+      </div>
+
+      <h2>基础用法</h2>
+      <div class="code-example">
+        <pre><code>&lt;div class="tabs tabs--white"&gt;
+  &lt;a href="#" class="tabs__item active"&gt;选项一&lt;/a&gt;
+  &lt;a href="#" class="tabs__item"&gt;选项二&lt;/a&gt;
+  &lt;a href="#" class="tabs__item"&gt;选项三&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>样式类型</h2>
+      <div class="component-description">
+        <p>选项卡支持常规样式和胶囊型样式，每种样式都支持白底和灰底两种背景。</p>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;!-- 常规样式 --&gt;
+&lt;div class="tabs tabs--white"&gt;...&lt;/div&gt;
+&lt;div class="tabs tabs--gray"&gt;...&lt;/div&gt;
+
+&lt;!-- 胶囊型样式 --&gt;
+&lt;div class="tabs tabs--capsule tabs--white"&gt;...&lt;/div&gt;
+&lt;div class="tabs tabs--capsule tabs--gray"&gt;...&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>尺寸变体</h2>
+      <div class="code-example">
+        <pre><code>&lt;div class="tabs tabs--small"&gt;...&lt;/div&gt;  /* 小尺寸 */
+&lt;div class="tabs tabs--medium"&gt;...&lt;/div&gt;  /* 中尺寸（默认） */
+&lt;div class="tabs tabs--large"&gt;...&lt;/div&gt;  /* 大尺寸 */</code></pre>
+      </div>
+
+      <h2>属性 (Props)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>类名</th>
+            <th>说明</th>
+            <th>类型</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.tabs--white</code></td>
+            <td>白底背景</td>
+            <td>背景变体</td>
+          </tr>
+          <tr>
+            <td><code>.tabs--gray</code></td>
+            <td>灰底背景</td>
+            <td>背景变体</td>
+          </tr>
+          <tr>
+            <td><code>.tabs--capsule</code></td>
+            <td>胶囊型样式</td>
+            <td>样式类型</td>
+          </tr>
+          <tr>
+            <td><code>.tabs__item.active</code></td>
+            <td>选中状态</td>
+            <td>状态</td>
+          </tr>
+          <tr>
+            <td><code>.tabs--small</code></td>
+            <td>小尺寸</td>
+            <td>尺寸</td>
+          </tr>
+          <tr>
+            <td><code>.tabs--medium</code></td>
+            <td>中尺寸（默认）</td>
+            <td>尺寸</td>
+          </tr>
+          <tr>
+            <td><code>.tabs--large</code></td>
+            <td>大尺寸</td>
+            <td>尺寸</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Picker 选择器组件 -->
+    <section id="picker" class="component-section">
+      <h1>选择器 Picker</h1>
+      <div class="component-description">
+        <p>用于选择一个时间点或者一个时间段。</p>
+      </div>
+
+      <h2>基础用法</h2>
+      <div class="code-example">
+        <pre><code>&lt;div class="picker picker--single-column"&gt;
+  &lt;div class="picker__header"&gt;
+    &lt;button class="picker__close"&gt;
+      &lt;svg class="picker__close-icon"&gt;...&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;p class="picker__title"&gt;单列选择器&lt;/p&gt;
+    &lt;div class="picker__placeholder"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="picker__content"&gt;
+    &lt;div class="picker__columns picker__columns--single"&gt;
+      &lt;div class="picker__column"&gt;
+        &lt;div class="picker__option"&gt;
+          &lt;span class="picker__option-text"&gt;选项一&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="picker__option picker__option--selected"&gt;
+          &lt;span class="picker__option-text"&gt;选项二&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="picker__mask-top"&gt;&lt;/div&gt;
+    &lt;div class="picker__mask-bottom"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="picker__footer"&gt;
+    &lt;button class="picker__confirm-btn"&gt;
+      &lt;span class="picker__confirm-btn-text"&gt;确定&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>类型变体</h2>
+      <div class="component-description">
+        <p>Picker 支持单列、双列和三列三种布局类型。</p>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;!-- 单列选择器 --&gt;
+&lt;div class="picker picker--single-column"&gt;...&lt;/div&gt;
+
+&lt;!-- 双列选择器 --&gt;
+&lt;div class="picker picker--double-column"&gt;...&lt;/div&gt;
+
+&lt;!-- 三列选择器 --&gt;
+&lt;div class="picker picker--triple-column"&gt;...&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>组件结构</h2>
+      <div class="component-description">
+        <p>Picker 组件由以下部分组成：</p>
+        <ul style="margin-left: var(--space-030); line-height: 2;">
+          <li><code>.picker__header</code> - 头部区域（包含关闭按钮和标题）</li>
+          <li><code>.picker__content</code> - 内容区域（可滚动的选项列表）</li>
+          <li><code>.picker__columns</code> - 列容器</li>
+          <li><code>.picker__column</code> - 单列容器</li>
+          <li><code>.picker__option</code> - 选项项</li>
+          <li><code>.picker__mask-top</code> - 顶部渐变遮罩</li>
+          <li><code>.picker__mask-bottom</code> - 底部渐变遮罩</li>
+          <li><code>.picker__footer</code> - 底部操作区（包含确定按钮）</li>
+        </ul>
+      </div>
+
+      <h2>选项状态</h2>
+      <div class="code-example">
+        <pre><code>&lt;!-- 未选中状态 --&gt;
+&lt;div class="picker__option"&gt;
+  &lt;span class="picker__option-text"&gt;选项文本&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- 选中状态 --&gt;
+&lt;div class="picker__option picker__option--selected"&gt;
+  &lt;span class="picker__option-text"&gt;选项文本&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>动画参数</h2>
+      <div class="component-description">
+        <p>Picker 组件的滚动动画参数（需要 JavaScript 实现）：</p>
+        <ul style="margin-left: var(--space-030); line-height: 2;">
+          <li><strong>停止动画时间</strong>: 0.3秒 - 当滚动停止时的回弹动画持续时间</li>
+          <li><strong>惯性时间</strong>: 150ms - 影响滚动的"灵敏度"和惯性距离</li>
+          <li><strong>时间窗口</strong>: 100ms - 用于计算惯性滚动的时间窗口</li>
+          <li><strong>最小滑动距离</strong>: 10px - 小于此值视为点击而非滑动</li>
+          <li><strong>惯性判断阈值</strong>: 100ms - 超过此时间间隔则不执行惯性滚动</li>
+          <li><strong>采样点数量</strong>: 最多记录40个滑动轨迹点</li>
+        </ul>
+      </div>
+
+      <h2>属性 (Props)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>类名</th>
+            <th>说明</th>
+            <th>类型</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.picker--single-column</code></td>
+            <td>单列选择器</td>
+            <td>类型变体</td>
+          </tr>
+          <tr>
+            <td><code>.picker--double-column</code></td>
+            <td>双列选择器</td>
+            <td>类型变体</td>
+          </tr>
+          <tr>
+            <td><code>.picker--triple-column</code></td>
+            <td>三列选择器</td>
+            <td>类型变体</td>
+          </tr>
+          <tr>
+            <td><code>.picker__option--selected</code></td>
+            <td>选中状态</td>
+            <td>状态</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Step 步骤器组件 -->
+    <section id="step" class="component-section">
+      <h1>步骤器 Step</h1>
+      <div class="component-description">
+        <p>用于任务步骤展示或任务进度展示。支持水平（Horizontal）和垂直（Vertical）两种布局方式。</p>
+      </div>
+
+      <h2>基础用法</h2>
+      <div class="code-example">
+        <pre><code>&lt;!-- 水平步骤器 --&gt;
+&lt;div class="step step--horizontal step--process"&gt;
+  &lt;div class="step__item step__item--completed"&gt;
+    &lt;div class="step__icon"&gt;
+      &lt;div class="step__icon-number step__icon-number--green"&gt;
+        &lt;span class="step__icon-number-text"&gt;1&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="step__line step__line--brand"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="step__item step__item--in-progress"&gt;
+    &lt;div class="step__icon"&gt;
+      &lt;div class="step__icon-number step__icon-number--green"&gt;
+        &lt;span class="step__icon-number-text"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="step__line"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 垂直步骤器 --&gt;
+&lt;div class="step step--vertical step--process"&gt;
+  &lt;div class="step__item step__item--completed"&gt;
+    &lt;div class="step__icon"&gt;
+      &lt;div class="step__icon-done"&gt;
+        &lt;svg&gt;...&lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;div class="step__line step__line--brand"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="step__content"&gt;
+      &lt;div class="step__header"&gt;
+        &lt;p class="step__title"&gt;标题&lt;/p&gt;
+        &lt;p class="step__time"&gt;2020-4-15 17:23&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;p class="step__summary"&gt;摘要信息&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>类型 (Type)</h2>
+      <div class="component-description">
+        <p>Step 组件支持两种类型：</p>
+        <ul style="margin-left: var(--space-030); line-height: 2;">
+          <li><strong>流程步骤器 (Process Step)</strong>：用于引导用户完成多步骤、有先后顺序任务的导航指示组件。它明确展示流程总步骤、当前所处阶段以及已完成和未完成的步骤，强调任务的连续性、顺序性和进度感。</li>
+          <li><strong>状态指示器 (Status Indicator)</strong>：一种用于标记内容区块、页面或独立选项当前所处位置的视觉指示组件。它仅反映当前位置，各"步骤"代表的内容彼此独立，无逻辑先后关系，主要用于空间定位而非进度追踪。</li>
+        </ul>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;!-- 流程步骤器 --&gt;
+&lt;div class="step step--process"&gt;...&lt;/div&gt;
+
+&lt;!-- 状态指示器 --&gt;
+&lt;div class="step step--indicator"&gt;...&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>布局方向 (Layout Direction)</h2>
+      <div class="component-description">
+        <p>Step 组件支持水平和垂直两种布局方向。</p>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;!-- 水平布局 --&gt;
+&lt;div class="step step--horizontal"&gt;...&lt;/div&gt;
+
+&lt;!-- 垂直布局 --&gt;
+&lt;div class="step step--vertical"&gt;...&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>状态 (Status)</h2>
+      <div class="component-description">
+        <p>每个步骤项支持三种状态：</p>
+        <ul style="margin-left: var(--space-030); line-height: 2;">
+          <li><strong>已完成 (Completed)</strong>：步骤已完成，使用绿色图标和连接线</li>
+          <li><strong>进行中 (In Progress)</strong>：当前正在进行的步骤，使用绿色图标</li>
+          <li><strong>未开始 (Pending)</strong>：尚未开始的步骤，使用灰色图标和连接线</li>
+        </ul>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;div class="step__item step__item--completed"&gt;已完成&lt;/div&gt;
+&lt;div class="step__item step__item--in-progress"&gt;进行中&lt;/div&gt;
+&lt;div class="step__item step__item--pending"&gt;未开始&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>图标类型 (Icon Types)</h2>
+      <div class="component-description">
+        <p>Step 组件支持多种图标类型：</p>
+        <ul style="margin-left: var(--space-030); line-height: 2;">
+          <li><strong>数字图标</strong>：显示步骤序号，支持绿色（已完成/进行中）和灰色（未开始）两种颜色</li>
+          <li><strong>完成图标</strong>：对勾图标，表示步骤已完成</li>
+          <li><strong>时间图标</strong>：蓝色时间图标</li>
+          <li><strong>报错图标</strong>：红色错误图标</li>
+          <li><strong>信息图标</strong>：黄色信息图标</li>
+          <li><strong>更多图标</strong>：黑色更多图标</li>
+        </ul>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;!-- 数字图标（绿色） --&gt;
+&lt;div class="step__icon-number step__icon-number--green"&gt;
+  &lt;span class="step__icon-number-text"&gt;1&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- 数字图标（灰色） --&gt;
+&lt;div class="step__icon-number step__icon-number--gray"&gt;
+  &lt;span class="step__icon-number-text"&gt;2&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- 完成图标 --&gt;
+&lt;div class="step__icon-done"&gt;
+  &lt;svg&gt;...&lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;!-- 时间图标 --&gt;
+&lt;div class="step__icon-other step__icon-other--time"&gt;
+  &lt;svg&gt;...&lt;/svg&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>连接线 (Connector Line)</h2>
+      <div class="component-description">
+        <p>连接线用于连接各个步骤项，支持以下样式：</p>
+        <ul style="margin-left: var(--space-030); line-height: 2;">
+          <li><strong>绿色线</strong>：表示已完成或进行中的步骤之间的连接</li>
+          <li><strong>灰色线</strong>：表示未开始步骤之间的连接</li>
+          <li><strong>无线</strong>：最后一个步骤项不显示连接线</li>
+        </ul>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;!-- 绿色连接线 --&gt;
+&lt;div class="step__line step__line--brand"&gt;&lt;/div&gt;
+
+&lt;!-- 灰色连接线 --&gt;
+&lt;div class="step__line"&gt;&lt;/div&gt;
+
+&lt;!-- 隐藏连接线 --&gt;
+&lt;div class="step__line step__line--hidden"&gt;&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>内容区域 (Content Area)</h2>
+      <div class="component-description">
+        <p>垂直布局的 Step 组件支持显示内容区域，包括：</p>
+        <ul style="margin-left: var(--space-030); line-height: 2;">
+          <li><strong>标题</strong>：步骤的标题文本</li>
+          <li><strong>时间</strong>：步骤的时间信息（可选）</li>
+          <li><strong>摘要</strong>：步骤的摘要信息（可选）</li>
+        </ul>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;div class="step__content"&gt;
+  &lt;div class="step__header"&gt;
+    &lt;p class="step__title"&gt;标题&lt;/p&gt;
+    &lt;p class="step__time"&gt;2020-4-15 17:23&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p class="step__summary"&gt;摘要信息摘要信息摘要信&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>组件属性</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>类名</th>
+            <th>说明</th>
+            <th>类型</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.step--horizontal</code></td>
+            <td>水平布局</td>
+            <td>布局方向</td>
+          </tr>
+          <tr>
+            <td><code>.step--vertical</code></td>
+            <td>垂直布局</td>
+            <td>布局方向</td>
+          </tr>
+          <tr>
+            <td><code>.step--process</code></td>
+            <td>流程步骤器</td>
+            <td>类型</td>
+          </tr>
+          <tr>
+            <td><code>.step--indicator</code></td>
+            <td>状态指示器</td>
+            <td>类型</td>
+          </tr>
+          <tr>
+            <td><code>.step__item--completed</code></td>
+            <td>已完成状态</td>
+            <td>状态</td>
+          </tr>
+          <tr>
+            <td><code>.step__item--in-progress</code></td>
+            <td>进行中状态</td>
+            <td>状态</td>
+          </tr>
+          <tr>
+            <td><code>.step__item--pending</code></td>
+            <td>未开始状态</td>
+            <td>状态</td>
+          </tr>
+          <tr>
+            <td><code>.step__icon-number--green</code></td>
+            <td>绿色数字图标</td>
+            <td>图标类型</td>
+          </tr>
+          <tr>
+            <td><code>.step__icon-number--gray</code></td>
+            <td>灰色数字图标</td>
+            <td>图标类型</td>
+          </tr>
+          <tr>
+            <td><code>.step__line--brand</code></td>
+            <td>绿色连接线</td>
+            <td>连接线样式</td>
+          </tr>
+          <tr>
+            <td><code>.step__line--hidden</code></td>
+            <td>隐藏连接线</td>
+            <td>连接线样式</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Icon 图标库 -->
+    <section id="icon" class="component-section">
+      <h1>图标库 Icon Library</h1>
+      <div class="component-description">
+        <p>图标作为 UI 构成中重要的元素，一定程度上影响 UI 界面整体呈现出的风格。</p>
+      </div>
+
+      <h2>基础用法</h2>
+      <div class="code-example">
+        <pre><code>&lt;span class="icon icon--primary"&gt;
+  &lt;svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"&gt;
+    &lt;path d="..."&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+&lt;/span&gt;</code></pre>
+      </div>
+
+      <h2>尺寸变体</h2>
+      <div class="component-description">
+        <p>图标支持三种尺寸：小 (24px)、中 (48px)、大 (64px)。</p>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;span class="icon icon--small icon--primary"&gt;...&lt;/span&gt;
+&lt;span class="icon icon--medium icon--primary"&gt;...&lt;/span&gt;
+&lt;span class="icon icon--large icon--primary"&gt;...&lt;/span&gt;</code></pre>
+      </div>
+      <h3>属性 (Props)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>类名</th>
+            <th>说明</th>
+            <th>尺寸</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.icon--small</code></td>
+            <td>小尺寸图标</td>
+            <td>24px × 24px</td>
+          </tr>
+          <tr>
+            <td><code>.icon--medium</code></td>
+            <td>中等尺寸图标（默认）</td>
+            <td>48px × 48px</td>
+          </tr>
+          <tr>
+            <td><code>.icon--large</code></td>
+            <td>大尺寸图标</td>
+            <td>64px × 64px</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>颜色变体</h2>
+      <div class="component-description">
+        <p>图标支持多种颜色变体，通过 CSS 类控制。</p>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;span class="icon icon--primary"&gt;...&lt;/span&gt;
+&lt;span class="icon icon--brand"&gt;...&lt;/span&gt;
+&lt;span class="icon icon--danger"&gt;...&lt;/span&gt;
+&lt;span class="icon icon--disabled"&gt;...&lt;/span&gt;</code></pre>
+      </div>
+      <h3>属性 (Props)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>类名</th>
+            <th>说明</th>
+            <th>颜色</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.icon--primary</code></td>
+            <td>主色图标</td>
+            <td>黑色 (#000000)</td>
+          </tr>
+          <tr>
+            <td><code>.icon--brand</code></td>
+            <td>品牌色图标</td>
+            <td>绿色 (#07c160)</td>
+          </tr>
+          <tr>
+            <td><code>.icon--danger</code></td>
+            <td>危险色图标</td>
+            <td>红色 (#fa5151)</td>
+          </tr>
+          <tr>
+            <td><code>.icon--disabled</code></td>
+            <td>禁用状态图标</td>
+            <td>半透明灰色</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>样式变体</h2>
+      <div class="component-description">
+        <p>图标支持 Fill（填充）和 Outline（描边）两种样式。</p>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;!-- Fill 样式（默认）--&gt;
+&lt;span class="icon icon--primary"&gt;
+  &lt;svg fill="currentColor"&gt;...&lt;/svg&gt;
+&lt;/span&gt;
+
+&lt;!-- Outline 样式 --&gt;
+&lt;span class="icon icon--primary icon--outline"&gt;
+  &lt;svg stroke="currentColor" fill="none"&gt;...&lt;/svg&gt;
+&lt;/span&gt;</code></pre>
+      </div>
+
+      <h2>图标按钮</h2>
+      <div class="component-description">
+        <p>图标可以作为按钮使用，支持点击交互。</p>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;button class="icon-btn"&gt;
+  &lt;span class="icon icon--primary"&gt;
+    &lt;svg&gt;...&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="icon-btn icon-btn--small"&gt;...&lt;/button&gt;
+&lt;button class="icon-btn icon-btn--large"&gt;...&lt;/button&gt;</code></pre>
+      </div>
+      <h3>属性 (Props)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>类名</th>
+            <th>说明</th>
+            <th>尺寸</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.icon-btn</code></td>
+            <td>图标按钮（默认）</td>
+            <td>48px × 48px</td>
+          </tr>
+          <tr>
+            <td><code>.icon-btn--small</code></td>
+            <td>小尺寸图标按钮</td>
+            <td>32px × 32px</td>
+          </tr>
+          <tr>
+            <td><code>.icon-btn--large</code></td>
+            <td>大尺寸图标按钮</td>
+            <td>64px × 64px</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>图标与文本组合</h2>
+      <div class="component-description">
+        <p>图标可以与文本组合使用，提供更好的视觉层次。</p>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;div class="icon-with-text"&gt;
+  &lt;span class="icon icon--primary"&gt;
+    &lt;svg&gt;...&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span&gt;文本内容&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h2>图标容器</h2>
+      <div class="component-description">
+        <p>使用图标容器可以更好地控制图标的对齐和布局。</p>
+      </div>
+      <div class="code-example">
+        <pre><code>&lt;div class="icon-container"&gt;
+  &lt;span class="icon icon--primary"&gt;
+    &lt;svg&gt;...&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function showSection(sectionId) {
+      // 隐藏所有section
+      document.querySelectorAll('.component-section').forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // 显示选中的section
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.classList.add('active');
+      }
+
+      // 更新导航链接状态
+      document.querySelectorAll('.nav-tree-link, .nav-tree-sub-link').forEach(link => {
+        link.classList.remove('active');
+      });
+
+      // 设置当前链接为active
+      event.target.classList.add('active');
+
+      // 移动端自动关闭侧边栏
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('open');
+      }
+
+      // 滚动到顶部
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleSubmenu(link) {
+      const item = link.parentElement;
+      item.classList.toggle('expanded');
+    }
+
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    function filterComponents() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const items = document.querySelectorAll('.nav-tree-item, .nav-tree-sub li');
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(searchTerm) || searchTerm === '') {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // 初始化：展开第一个分类
+    document.addEventListener('DOMContentLoaded', function() {
+      const firstSubmenu = document.querySelector('.nav-tree-item .nav-tree-link');
+      if (firstSubmenu) {
+        firstSubmenu.parentElement.classList.add('expanded');
+      }
+    });
+
+    // 处理 URL hash
+    window.addEventListener('hashchange', function() {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        showSection(hash);
+      }
+    });
+
+    // 页面加载时处理 hash
+    if (window.location.hash) {
+      const hash = window.location.hash.substring(1);
+      showSection(hash);
+    }
+  </script>
+</body>
+</html>
+

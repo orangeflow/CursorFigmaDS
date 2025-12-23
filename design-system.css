@@ -1,0 +1,2379 @@
+/**
+ * WeChat Pay HK Design System
+ * CSS Design System Specification
+ * 微信支付香港设计系统 CSS 规范
+ */
+
+/* ============================================
+   1. 设计令牌 (Design Tokens)
+   ============================================ */
+
+:root {
+  /* ========== 颜色系统 (Color System) ========== */
+  
+  /* 品牌色 (Brand Colors) */
+  --color-brand-primary: #07c160;
+  --color-brand-primary-disabled: rgba(7, 193, 96, 0.5);
+  
+  /* 危险色 (Danger Colors) */
+  --color-danger: #fa5151;
+  --color-danger-disabled: rgba(250, 81, 81, 0.5);
+  
+  /* 中性色 (Neutral Colors) */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-black-05: rgba(0, 0, 0, 0.05);
+  --color-black-10: rgba(0, 0, 0, 0.1);
+  --color-black-50: rgba(0, 0, 0, 0.5);
+  
+  /* 文本颜色 (Text Colors) */
+  --text-brand: var(--color-brand-primary);
+  --text-danger: var(--color-danger);
+  --text-disabled: var(--color-black-10);
+  --text-always-white: var(--color-white);
+  
+  /* 控制组件颜色 (Control Colors) */
+  --control-brand: var(--color-brand-primary);
+  --control-brand-disabled: var(--color-brand-primary-disabled);
+  --control-danger: var(--color-danger);
+  --control-danger-disabled: var(--color-danger-disabled);
+  --control-secondary: var(--color-black-05);
+  --control-press-statelayer: var(--color-black-10);
+  
+  /* ========== 字体系统 (Typography System) ========== */
+  
+  /* 字体族 (Font Families) */
+  /* 中文字体 */
+  --font-family-chinese: 'PingFang_HK', 'PingFang_SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-chinese-medium: 'PingFang_HK', 'PingFang_SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-chinese-semibold: 'PingFang_SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* 英文字体 */
+  --font-family-english: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-family-english-medium: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  
+  /* 金额数值字体 */
+  --font-family-number: 'WeChat Sans Std', 'PingFang_HK', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-number-medium: 'WeChat Sans Std', 'PingFang_HK', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* 字体大小 (Font Sizes) - 中文字体 */
+  --font-size-text-01: 44px;
+  --font-size-text-02: 34px;
+  --font-size-text-03: 32px;
+  --font-size-text-04: 28px;
+  --font-size-text-05: 24px;
+  --font-size-text-06: 22px;
+  --font-size-text-07: 20px;
+  
+  /* 行高 (Line Heights) - 中文字体 */
+  --line-height-text-01: 64px;
+  --line-height-text-02: 48px;
+  --line-height-text-03: 48px;
+  --line-height-text-04: 40px;
+  --line-height-text-05: 32px;
+  --line-height-text-06: 32px;
+  --line-height-text-07: 28px;
+  
+  /* 字体大小 (Font Sizes) - 英文字体 */
+  --font-size-english-text-01: 42px;
+  --font-size-english-text-02: 32px;
+  --font-size-english-text-03: 30px;
+  --font-size-english-text-04: 26px;
+  --font-size-english-text-05: 22px;
+  --font-size-english-text-06: 20px;
+  --font-size-english-text-07: 18px;
+  
+  /* 行高 (Line Heights) - 英文字体 */
+  --line-height-english-text-01: 50px;
+  --line-height-english-text-02: 38px;
+  --line-height-english-text-03: 38px;
+  --line-height-english-text-04: 36px;
+  --line-height-english-text-05: 26px;
+  --line-height-english-text-06: 24px;
+  --line-height-english-text-07: 24px;
+  
+  /* 字重 (Font Weights) */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  
+  /* ========== 间距系统 (Spacing System) ========== */
+  --space-010: 4px;    /* 组件场景使用，例如选项卡、标签等小型元素之间的间隔 */
+  --space-020: 8px;    /* 组件场景使用，例如按钮、徽标、单元格、页脚、小标题之间的间隔 */
+  --space-030: 16px;   /* 组件场景使用，例如选项卡、表单、协议、多选框、单选框 */
+  --space-040: 24px;   /* 组件场景使用，例如步骤器、侧边栏 */
+  --space-050: 32px;   /* 组件场景使用，例如步骤器、输入框 */
+  --space-060: 40px;   /* 组件场景使用，例如半屏弹层顶部 */
+  --space-070: 48px;   /* 组件场景使用，例如结果页 */
+  --space-080: 64px;   /* 组件场景使用，例如对话框、半屏弹层 */
+  --space-090: 80px;   /* 组件场景使用，例如半屏弹层、结果页操作区 */
+  --space-100: 96px;   /* 组件场景使用，例如结果页 */
+  --space-110: 120px;  /* 半屏弹层顶部与导航栏底部需保持120px及以上间距 */
+  
+  /* ========== 圆角系统 (Border Radius System) ========== */
+  --radius-010: 4px;   /* 极小场景使用，例如标签 */
+  --radius-020: 8px;   /* 组件场景使用，例如按钮 */
+  --radius-030: 12px;  /* 组件场景使用 */
+  --radius-040: 16px;  /* 组件场景使用，例如向导提示、公告栏 */
+  --radius-050: 24px;  /* 组件场景使用，例如半屏弹层、轻提示 */
+  --radius-060: 32px;  /* 组件场景使用 */
+  --radius-full: 9999px; /* 胶囊型组件使用，例如选项卡、胶囊徽标、开关、分页导航器 */
+  
+  /* ========== 阴影系统 (Shadow System) ========== */
+  --shadow-none: none;
+  
+  /* ========== 动效时间系统 (Motion Timing System) ========== */
+  
+  /* 设备类型时间 */
+  --motion-duration-mobile-small: 100ms;
+  --motion-duration-mobile-base: 200ms;
+  --motion-duration-mobile-medium: 250ms;
+  --motion-duration-mobile-large: 300ms;
+  --motion-duration-mobile-xlarge: 500ms;
+  
+  /* 平板设备时间（比移动设备长30%） */
+  --motion-duration-tablet-small: 130ms;
+  --motion-duration-tablet-base: 260ms;
+  --motion-duration-tablet-medium: 325ms;
+  --motion-duration-tablet-large: 390ms;
+  --motion-duration-tablet-xlarge: 650ms;
+  
+  /* UI组件尺寸时间 */
+  --motion-duration-small-ui: 100ms;      /* 小尺寸UI组件（开关、勾选） */
+  --motion-duration-small-ui-close: 200ms;
+  --motion-duration-medium-ui-open: 250ms; /* 中尺寸UI组件（菜单弹层）展开 */
+  --motion-duration-medium-ui-close: 200ms; /* 中尺寸UI组件收起 */
+  --motion-duration-large-ui-open: 300ms;   /* 大尺寸UI组件（全局弹层）展开 */
+  --motion-duration-large-ui-close: 250ms;  /* 大尺寸UI组件收起 */
+  
+  /* ========== 缓动曲线系统 (Easing Functions) ========== */
+  
+  /* 线性动效（无缓动） */
+  --easing-linear: linear;
+  
+  /* 缓出（Ease-Out）- 快速响应，自然结束 */
+  --easing-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  
+  /* 缓入（Ease-In）- 慢速开始，加速离开 */
+  --easing-ease-in: cubic-bezier(0.11, 0, 0.5, 0);
+  
+  /* 缓入缓出（Ease-In-Out）- 持续在视线内的元素 */
+  --easing-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  
+  /* 默认过渡 */
+  --transition-fast: var(--motion-duration-mobile-base) var(--easing-ease-out);
+  --transition-base: var(--motion-duration-mobile-medium) var(--easing-ease-out);
+  --transition-slow: var(--motion-duration-mobile-large) var(--easing-ease-out);
+}
+
+/* ============================================
+   2. 基础样式 (Base Styles)
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-chinese);
+  font-size: var(--font-size-text-02);
+  line-height: var(--line-height-text-02);
+  color: var(--color-black);
+  background-color: var(--color-white);
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   3. 按钮组件 (Button Component)
+   ============================================ */
+
+/* 基础按钮样式 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  white-space: nowrap;
+  transition: all var(--transition-base);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 按钮尺寸 (Button Sizes) */
+.btn--large {
+  min-height: 80px;
+  padding: var(--space-030) var(--space-050);
+  font-size: var(--font-size-text-02);
+  line-height: var(--line-height-text-03);
+  border-radius: var(--radius-020);
+  min-width: 368px;
+}
+
+.btn--middle {
+  min-height: 64px;
+  padding: var(--space-020) var(--space-030);
+  font-size: var(--font-size-text-02);
+  line-height: var(--line-height-text-03);
+  border-radius: var(--radius-020);
+  min-width: 116px;
+}
+
+.btn--small {
+  min-height: 56px;
+  padding: 8px var(--space-030);
+  font-size: var(--font-size-text-04);
+  line-height: var(--line-height-text-04);
+  border-radius: var(--radius-020);
+  min-width: 88px;
+}
+
+/* 按钮类型 (Button Types) */
+.btn--primary {
+  background-color: var(--control-brand);
+  color: var(--text-always-white);
+}
+
+.btn--primary:hover {
+  opacity: 0.9;
+}
+
+.btn--primary:active {
+  opacity: 0.8;
+}
+
+.btn--primary:disabled,
+.btn--primary.btn--disabled {
+  background-color: var(--control-brand-disabled);
+  color: var(--text-always-white);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.btn--auxillary {
+  background-color: var(--control-secondary);
+  color: var(--text-brand);
+}
+
+.btn--auxillary:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.btn--auxillary:active {
+  background-color: var(--control-press-statelayer);
+}
+
+.btn--auxillary:disabled,
+.btn--auxillary.btn--disabled {
+  background-color: var(--control-secondary);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+/* 按钮主题 (Button Themes) */
+.btn--danger {
+  background-color: var(--control-danger);
+  color: var(--text-always-white);
+}
+
+.btn--danger:hover {
+  opacity: 0.9;
+}
+
+.btn--danger:active {
+  opacity: 0.8;
+}
+
+.btn--danger:disabled,
+.btn--danger.btn--disabled {
+  background-color: var(--control-danger-disabled);
+  color: var(--text-always-white);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.btn--auxillary.btn--danger {
+  background-color: var(--control-secondary);
+  color: var(--text-danger);
+}
+
+.btn--auxillary.btn--danger:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.btn--auxillary.btn--danger:active {
+  background-color: var(--control-press-statelayer);
+}
+
+.btn--auxillary.btn--danger:disabled,
+.btn--auxillary.btn--danger.btn--disabled {
+  background-color: var(--control-secondary);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+/* 按钮图标 (Button Icons) */
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn--large .btn__icon {
+  width: 48px;
+  height: 48px;
+}
+
+.btn--middle .btn__icon {
+  width: 32px;
+  height: 32px;
+}
+
+.btn--small .btn__icon {
+  width: 32px;
+  height: 32px;
+}
+
+.btn__icon--prefix {
+  margin-right: var(--space-020);
+}
+
+.btn--large .btn__icon--prefix {
+  margin-right: var(--space-030);
+}
+
+.btn__icon--suffix {
+  margin-left: var(--space-020);
+}
+
+.btn--large .btn__icon--suffix {
+  margin-left: var(--space-030);
+}
+
+/* 按钮文字 (Button Text) */
+.btn__text {
+  display: inline-block;
+}
+
+/* 按钮组 (Button Group) */
+.btn-group {
+  display: flex;
+  gap: var(--space-050);
+  align-items: center;
+}
+
+.btn-group--vertical {
+  flex-direction: column;
+  gap: var(--space-020);
+}
+
+.btn-group .btn {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 自适应文字规则 (Adaptive Text Rules) */
+.btn--large:not(.btn-group .btn) {
+  min-width: 304px;
+  padding-left: var(--space-050);
+  padding-right: var(--space-050);
+}
+
+.btn--middle:not(.btn-group .btn) {
+  min-width: 84px;
+  padding-left: var(--space-030);
+  padding-right: var(--space-030);
+}
+
+/* ============================================
+   4. 文本样式 (Typography)
+   ============================================ */
+
+/* ========== 文本样式变体 - 中文字体 ========== */
+.text-01 {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-01);
+  line-height: var(--line-height-text-01);
+}
+
+.text-02 {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-02);
+  line-height: var(--line-height-text-02);
+}
+
+.text-03 {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-03);
+  line-height: var(--line-height-text-03);
+}
+
+.text-04 {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-04);
+  line-height: var(--line-height-text-04);
+}
+
+.text-05 {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-05);
+  line-height: var(--line-height-text-05);
+}
+
+.text-06 {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-06);
+  line-height: var(--line-height-text-06);
+}
+
+.text-07 {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-07);
+  line-height: var(--line-height-text-07);
+}
+
+/* ========== 文本样式变体 - 英文字体 ========== */
+.text-english-01 {
+  font-family: var(--font-family-english);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-01);
+  line-height: var(--line-height-english-text-01);
+}
+
+.text-english-02 {
+  font-family: var(--font-family-english);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-02);
+  line-height: var(--line-height-english-text-02);
+}
+
+.text-english-03 {
+  font-family: var(--font-family-english);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-03);
+  line-height: var(--line-height-english-text-03);
+}
+
+.text-english-04 {
+  font-family: var(--font-family-english);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-04);
+  line-height: var(--line-height-english-text-04);
+}
+
+.text-english-05 {
+  font-family: var(--font-family-english);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-05);
+  line-height: var(--line-height-english-text-05);
+}
+
+.text-english-06 {
+  font-family: var(--font-family-english);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-06);
+  line-height: var(--line-height-english-text-06);
+}
+
+.text-english-07 {
+  font-family: var(--font-family-english);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-07);
+  line-height: var(--line-height-english-text-07);
+}
+
+/* ========== 文本样式变体 - 金额数值字体 (中文模式) ========== */
+.text-number-01 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-01);
+  line-height: var(--line-height-text-01);
+}
+
+.text-number-02 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-02);
+  line-height: var(--line-height-text-02);
+}
+
+.text-number-03 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-03);
+  line-height: var(--line-height-text-03);
+}
+
+.text-number-04 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-04);
+  line-height: var(--line-height-text-04);
+}
+
+.text-number-05 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-05);
+  line-height: var(--line-height-text-05);
+}
+
+.text-number-06 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-06);
+  line-height: var(--line-height-text-06);
+}
+
+.text-number-07 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-07);
+  line-height: var(--line-height-text-07);
+}
+
+/* ========== 文本样式变体 - 金额数值字体 (英文模式) ========== */
+.text-number-en-01 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-01);
+  line-height: var(--line-height-english-text-01);
+}
+
+.text-number-en-02 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-02);
+  line-height: var(--line-height-english-text-02);
+}
+
+.text-number-en-03 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-03);
+  line-height: var(--line-height-english-text-03);
+}
+
+.text-number-en-04 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-04);
+  line-height: var(--line-height-english-text-04);
+}
+
+.text-number-en-05 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-05);
+  line-height: var(--line-height-english-text-05);
+}
+
+.text-number-en-06 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-06);
+  line-height: var(--line-height-english-text-06);
+}
+
+.text-number-en-07 {
+  font-family: var(--font-family-number);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-english-text-07);
+  line-height: var(--line-height-english-text-07);
+}
+
+/* ========== 字重变体 ========== */
+.text-regular {
+  font-weight: var(--font-weight-regular);
+}
+
+.text-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.text-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ========== Medium 字重组合类 ========== */
+/* 中文字体 Medium 字重 */
+.text-01.text-medium,
+.text-medium.text-01 {
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-02.text-medium,
+.text-medium.text-02 {
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text-03);
+}
+
+.text-03.text-medium,
+.text-medium.text-03 {
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-04.text-medium,
+.text-medium.text-04 {
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-05.text-medium,
+.text-medium.text-05 {
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-06.text-medium,
+.text-medium.text-06 {
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-07.text-medium,
+.text-medium.text-07 {
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 英文字体 Medium 字重 */
+.text-english-01.text-medium,
+.text-medium.text-english-01 {
+  font-family: var(--font-family-english-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-english-02.text-medium,
+.text-medium.text-english-02 {
+  font-family: var(--font-family-english-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-english-03.text-medium,
+.text-medium.text-english-03 {
+  font-family: var(--font-family-english-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-english-04.text-medium,
+.text-medium.text-english-04 {
+  font-family: var(--font-family-english-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-english-05.text-medium,
+.text-medium.text-english-05 {
+  font-family: var(--font-family-english-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-english-06.text-medium,
+.text-medium.text-english-06 {
+  font-family: var(--font-family-english-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-english-07.text-medium,
+.text-medium.text-english-07 {
+  font-family: var(--font-family-english-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 金额数值字体 Medium 字重 (中文模式) */
+.text-number-01.text-medium,
+.text-medium.text-number-01 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-02.text-medium,
+.text-medium.text-number-02 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-03.text-medium,
+.text-medium.text-number-03 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-04.text-medium,
+.text-medium.text-number-04 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-05.text-medium,
+.text-medium.text-number-05 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-06.text-medium,
+.text-medium.text-number-06 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-07.text-medium,
+.text-medium.text-number-07 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 金额数值字体 Medium 字重 (英文模式) */
+.text-number-en-01.text-medium,
+.text-medium.text-number-en-01 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-en-02.text-medium,
+.text-medium.text-number-en-02 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-en-03.text-medium,
+.text-medium.text-number-en-03 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-en-04.text-medium,
+.text-medium.text-number-en-04 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-en-05.text-medium,
+.text-medium.text-number-en-05 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-en-06.text-medium,
+.text-medium.text-number-en-06 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-number-en-07.text-medium,
+.text-medium.text-number-en-07 {
+  font-family: var(--font-family-number-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 文本颜色变体 */
+.text-brand {
+  color: var(--text-brand);
+}
+
+.text-danger {
+  color: var(--text-danger);
+}
+
+.text-disabled {
+  color: var(--text-disabled);
+}
+
+.text-white {
+  color: var(--text-always-white);
+}
+
+/* ============================================
+   5. 间距工具类 (Spacing Utilities)
+   ============================================ */
+
+/* Margin */
+.m-010 { margin: var(--space-010); }
+.m-020 { margin: var(--space-020); }
+.m-030 { margin: var(--space-030); }
+.m-040 { margin: var(--space-040); }
+.m-050 { margin: var(--space-050); }
+.m-060 { margin: var(--space-060); }
+.m-070 { margin: var(--space-070); }
+.m-080 { margin: var(--space-080); }
+.m-090 { margin: var(--space-090); }
+.m-100 { margin: var(--space-100); }
+.m-110 { margin: var(--space-110); }
+
+.mt-010 { margin-top: var(--space-010); }
+.mt-020 { margin-top: var(--space-020); }
+.mt-030 { margin-top: var(--space-030); }
+.mt-040 { margin-top: var(--space-040); }
+.mt-050 { margin-top: var(--space-050); }
+.mt-060 { margin-top: var(--space-060); }
+.mt-070 { margin-top: var(--space-070); }
+.mt-080 { margin-top: var(--space-080); }
+.mt-090 { margin-top: var(--space-090); }
+.mt-100 { margin-top: var(--space-100); }
+.mt-110 { margin-top: var(--space-110); }
+
+.mr-010 { margin-right: var(--space-010); }
+.mr-020 { margin-right: var(--space-020); }
+.mr-030 { margin-right: var(--space-030); }
+.mr-040 { margin-right: var(--space-040); }
+.mr-050 { margin-right: var(--space-050); }
+.mr-060 { margin-right: var(--space-060); }
+.mr-070 { margin-right: var(--space-070); }
+.mr-080 { margin-right: var(--space-080); }
+.mr-090 { margin-right: var(--space-090); }
+.mr-100 { margin-right: var(--space-100); }
+.mr-110 { margin-right: var(--space-110); }
+
+.mb-010 { margin-bottom: var(--space-010); }
+.mb-020 { margin-bottom: var(--space-020); }
+.mb-030 { margin-bottom: var(--space-030); }
+.mb-040 { margin-bottom: var(--space-040); }
+.mb-050 { margin-bottom: var(--space-050); }
+.mb-060 { margin-bottom: var(--space-060); }
+.mb-070 { margin-bottom: var(--space-070); }
+.mb-080 { margin-bottom: var(--space-080); }
+.mb-090 { margin-bottom: var(--space-090); }
+.mb-100 { margin-bottom: var(--space-100); }
+.mb-110 { margin-bottom: var(--space-110); }
+
+.ml-010 { margin-left: var(--space-010); }
+.ml-020 { margin-left: var(--space-020); }
+.ml-030 { margin-left: var(--space-030); }
+.ml-040 { margin-left: var(--space-040); }
+.ml-050 { margin-left: var(--space-050); }
+.ml-060 { margin-left: var(--space-060); }
+.ml-070 { margin-left: var(--space-070); }
+.ml-080 { margin-left: var(--space-080); }
+.ml-090 { margin-left: var(--space-090); }
+.ml-100 { margin-left: var(--space-100); }
+.ml-110 { margin-left: var(--space-110); }
+
+/* Padding */
+.p-010 { padding: var(--space-010); }
+.p-020 { padding: var(--space-020); }
+.p-030 { padding: var(--space-030); }
+.p-040 { padding: var(--space-040); }
+.p-050 { padding: var(--space-050); }
+.p-060 { padding: var(--space-060); }
+.p-070 { padding: var(--space-070); }
+.p-080 { padding: var(--space-080); }
+.p-090 { padding: var(--space-090); }
+.p-100 { padding: var(--space-100); }
+.p-110 { padding: var(--space-110); }
+
+.pt-010 { padding-top: var(--space-010); }
+.pt-020 { padding-top: var(--space-020); }
+.pt-030 { padding-top: var(--space-030); }
+.pt-040 { padding-top: var(--space-040); }
+.pt-050 { padding-top: var(--space-050); }
+.pt-060 { padding-top: var(--space-060); }
+.pt-070 { padding-top: var(--space-070); }
+.pt-080 { padding-top: var(--space-080); }
+.pt-090 { padding-top: var(--space-090); }
+.pt-100 { padding-top: var(--space-100); }
+.pt-110 { padding-top: var(--space-110); }
+
+.pr-010 { padding-right: var(--space-010); }
+.pr-020 { padding-right: var(--space-020); }
+.pr-030 { padding-right: var(--space-030); }
+.pr-040 { padding-right: var(--space-040); }
+.pr-050 { padding-right: var(--space-050); }
+.pr-060 { padding-right: var(--space-060); }
+.pr-070 { padding-right: var(--space-070); }
+.pr-080 { padding-right: var(--space-080); }
+.pr-090 { padding-right: var(--space-090); }
+.pr-100 { padding-right: var(--space-100); }
+.pr-110 { padding-right: var(--space-110); }
+
+.pb-010 { padding-bottom: var(--space-010); }
+.pb-020 { padding-bottom: var(--space-020); }
+.pb-030 { padding-bottom: var(--space-030); }
+.pb-040 { padding-bottom: var(--space-040); }
+.pb-050 { padding-bottom: var(--space-050); }
+.pb-060 { padding-bottom: var(--space-060); }
+.pb-070 { padding-bottom: var(--space-070); }
+.pb-080 { padding-bottom: var(--space-080); }
+.pb-090 { padding-bottom: var(--space-090); }
+.pb-100 { padding-bottom: var(--space-100); }
+.pb-110 { padding-bottom: var(--space-110); }
+
+.pl-010 { padding-left: var(--space-010); }
+.pl-020 { padding-left: var(--space-020); }
+.pl-030 { padding-left: var(--space-030); }
+.pl-040 { padding-left: var(--space-040); }
+.pl-050 { padding-left: var(--space-050); }
+.pl-060 { padding-left: var(--space-060); }
+.pl-070 { padding-left: var(--space-070); }
+.pl-080 { padding-left: var(--space-080); }
+.pl-090 { padding-left: var(--space-090); }
+.pl-100 { padding-left: var(--space-100); }
+.pl-110 { padding-left: var(--space-110); }
+
+/* ============================================
+   6. 圆角工具类 (Border Radius Utilities)
+   ============================================ */
+
+.rounded-010 { border-radius: var(--radius-010); }
+.rounded-020 { border-radius: var(--radius-020); }
+.rounded-030 { border-radius: var(--radius-030); }
+.rounded-040 { border-radius: var(--radius-040); }
+.rounded-050 { border-radius: var(--radius-050); }
+.rounded-060 { border-radius: var(--radius-060); }
+.rounded-full { border-radius: var(--radius-full); }
+
+/* ============================================
+   7. 布局工具类 (Layout Utilities)
+   ============================================ */
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-010 {
+  gap: var(--space-010);
+}
+
+.gap-020 {
+  gap: var(--space-020);
+}
+
+.gap-030 {
+  gap: var(--space-030);
+}
+
+.gap-040 {
+  gap: var(--space-040);
+}
+
+.gap-050 {
+  gap: var(--space-050);
+}
+
+.gap-060 {
+  gap: var(--space-060);
+}
+
+.gap-070 {
+  gap: var(--space-070);
+}
+
+.gap-080 {
+  gap: var(--space-080);
+}
+
+.gap-090 {
+  gap: var(--space-090);
+}
+
+.gap-100 {
+  gap: var(--space-100);
+}
+
+.gap-110 {
+  gap: var(--space-110);
+}
+
+/* ============================================
+   8. 运营按钮 (Operational Button)
+   ============================================ */
+
+.operational-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--space-010) var(--space-020) var(--space-010) var(--space-030);
+  gap: var(--space-010);
+  cursor: pointer;
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-06);
+  line-height: var(--line-height-text-06);
+  color: var(--text-brand);
+  transition: all var(--transition-base);
+}
+
+.operational-btn:hover {
+  opacity: 0.9;
+}
+
+.operational-btn:active {
+  opacity: 0.8;
+}
+
+.operational-btn--large {
+  padding: var(--space-020) var(--space-030);
+  font-size: var(--font-size-text-03);
+  line-height: var(--line-height-text-03);
+  min-height: 64px;
+}
+
+.operational-btn--medium {
+  padding: var(--space-010) var(--space-020) var(--space-010) var(--space-030);
+  font-size: var(--font-size-text-06);
+  line-height: var(--line-height-text-06);
+  min-height: 40px;
+}
+
+.operational-btn--small {
+  padding: var(--space-010) var(--space-020);
+  font-size: var(--font-size-text-06);
+  line-height: var(--line-height-text-06);
+  min-height: 32px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.operational-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.operational-btn--large .operational-btn__icon {
+  width: 48px;
+  height: 48px;
+}
+
+.operational-btn--small .operational-btn__icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* ============================================
+   9. Banner 组件 (Banner Component)
+   ============================================ */
+
+.banner {
+  background-color: var(--color-black-05);
+  border-radius: var(--radius-040);
+  padding: var(--space-030);
+  position: relative;
+  overflow: hidden;
+}
+
+.banner__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-020);
+}
+
+.banner__title {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-04);
+  line-height: var(--line-height-text-04);
+  color: var(--text-brand);
+  margin: 0;
+}
+
+.banner__subtitle {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-06);
+  line-height: var(--line-height-text-06);
+  color: var(--text-brand);
+  margin: 0;
+}
+
+.banner__action {
+  margin-top: var(--space-020);
+}
+
+/* ============================================
+   10. Divider 分割线组件 (Divider Component)
+   ============================================ */
+
+/* 水平分割线 (Horizontal Divider) */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-black-05);
+  border: none;
+  margin: 0;
+}
+
+/* 垂直分割线 (Vertical Divider) */
+.divider--vertical {
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-black-05);
+  border: none;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 分割线变体 - 品牌色 */
+.divider--brand {
+  background-color: var(--color-brand-primary);
+}
+
+/* 分割线变体 - 危险色 */
+.divider--danger {
+  background-color: var(--color-danger);
+}
+
+/* ============================================
+   11. Tabs 选项卡组件 (Tabs Component)
+   ============================================ */
+
+/* 选项卡容器 */
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-030);
+  overflow-x: auto;
+  position: relative;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* 选项卡项 */
+.tabs__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-020) var(--space-030);
+  font-family: var(--font-family-chinese);
+  font-size: var(--font-size-text-04);
+  line-height: var(--line-height-text-04);
+  color: var(--color-black-50);
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  cursor: pointer;
+  transition: all var(--motion-duration-mobile-base) var(--easing-ease-out);
+  flex-shrink: 0;
+}
+
+/* 选项卡项 - 选中状态 */
+.tabs__item.active {
+  color: var(--text-brand);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 选项卡项 - 点击态 (Pressed State) */
+.tabs__item:active {
+  background-color: var(--control-press-statelayer);
+}
+
+/* 选项卡项底部指示条 */
+.tabs__item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 4px;
+  background-color: var(--color-brand-primary);
+  border-radius: var(--radius-010) var(--radius-010) 0 0;
+  transition: width var(--motion-duration-mobile-base) var(--easing-ease-out);
+}
+
+.tabs__item.active::after {
+  width: 48px; /* 最小宽度 */
+  min-width: 48px;
+  max-width: 112px;
+}
+
+/* 选项卡容器 - 白底 */
+.tabs--white {
+  background-color: var(--color-white);
+}
+
+/* 选项卡容器 - 灰底 */
+.tabs--gray {
+  background-color: var(--color-black-05);
+}
+
+/* 胶囊型选项卡 */
+.tabs--capsule {
+  gap: var(--space-010);
+}
+
+.tabs--capsule .tabs__item {
+  border-radius: var(--radius-full);
+  background-color: transparent;
+  min-width: 2ch; /* 最小宽度为两个字符 */
+}
+
+.tabs--capsule .tabs__item.active {
+  background-color: var(--color-brand-primary);
+  color: var(--text-always-white);
+}
+
+.tabs--capsule .tabs__item::after {
+  display: none; /* 胶囊型不使用底部指示条 */
+}
+
+/* 胶囊型选项卡 - 白底 */
+.tabs--capsule.tabs--white .tabs__item {
+  background-color: transparent;
+}
+
+.tabs--capsule.tabs--white .tabs__item.active {
+  background-color: var(--color-brand-primary);
+}
+
+/* 胶囊型选项卡 - 灰底 */
+.tabs--capsule.tabs--gray .tabs__item {
+  background-color: transparent;
+}
+
+.tabs--capsule.tabs--gray .tabs__item.active {
+  background-color: var(--color-brand-primary);
+}
+
+/* 选项卡尺寸 */
+.tabs--small .tabs__item {
+  font-size: var(--font-size-text-06);
+  line-height: var(--line-height-text-06);
+  padding: var(--space-010) var(--space-020);
+  min-height: 64px;
+}
+
+.tabs--medium .tabs__item {
+  font-size: var(--font-size-text-04);
+  line-height: var(--line-height-text-04);
+  padding: var(--space-020) var(--space-030);
+  min-height: 64px;
+}
+
+.tabs--large .tabs__item {
+  font-size: var(--font-size-text-03);
+  line-height: var(--line-height-text-03);
+  padding: var(--space-020) var(--space-030);
+  min-height: 72px;
+}
+
+/* 选项卡渐变遮罩（用于多标签滚动提示） */
+.tabs__mask {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background: linear-gradient(to right, transparent, var(--color-white));
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tabs--gray .tabs__mask {
+  background: linear-gradient(to right, transparent, var(--color-black-05));
+}
+
+/* ============================================
+   12. Icon 图标库 (Icon Library)
+   ============================================ */
+
+/* 图标基础样式 */
+.icon {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  position: relative;
+}
+
+/* 图标尺寸变体 */
+.icon--small {
+  width: 24px;
+  height: 24px;
+}
+
+.icon--medium {
+  width: 48px;
+  height: 48px;
+}
+
+.icon--large {
+  width: 64px;
+  height: 64px;
+}
+
+/* 图标颜色变体 */
+.icon--primary {
+  color: var(--color-black);
+  fill: currentColor;
+}
+
+.icon--brand {
+  color: var(--color-brand-primary);
+  fill: currentColor;
+}
+
+.icon--danger {
+  color: var(--color-danger);
+  fill: currentColor;
+}
+
+.icon--disabled {
+  color: var(--color-black-50);
+  fill: currentColor;
+  opacity: 0.5;
+}
+
+/* 图标样式变体 - Fill/Outline */
+/* Fill 样式：填充图标 - 通过 SVG fill 属性控制 */
+/* Outline 样式：描边图标 - 通过 SVG stroke 属性控制 */
+.icon--outline {
+  stroke: currentColor;
+  fill: none;
+}
+
+/* 图标容器 */
+.icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 图标与文本组合 */
+.icon-with-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-020);
+}
+
+.icon-with-text .icon {
+  flex-shrink: 0;
+}
+
+/* 图标按钮样式 */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--radius-020);
+  transition: all var(--motion-duration-mobile-base) var(--easing-ease-out);
+}
+
+.icon-btn:hover {
+  background-color: var(--color-black-05);
+}
+
+.icon-btn:active {
+  background-color: var(--control-press-statelayer);
+}
+
+.icon-btn--small {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-btn--large {
+  width: 64px;
+  height: 64px;
+}
+
+/* ============================================
+   13. Picker 选择器组件 (Picker Component)
+   ============================================ */
+
+/* Picker 容器 */
+.picker {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border-radius: var(--radius-050) var(--radius-050) 0 0;
+  overflow: hidden;
+  width: 100%;
+  max-width: 750px;
+}
+
+/* Picker 头部 */
+.picker__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-030);
+  padding: var(--space-060) var(--space-050);
+  background-color: var(--color-white);
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Picker 关闭按钮 */
+.picker__close {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.picker__close-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-black);
+  fill: currentColor;
+}
+
+/* Picker 标题 */
+.picker__title {
+  flex: 1 0 0;
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-03);
+  line-height: var(--line-height-text-03);
+  color: var(--color-black);
+  text-align: center;
+  white-space: pre-wrap;
+  min-width: 0;
+}
+
+/* Picker 右侧占位（保持标题居中） */
+.picker__placeholder {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+/* Picker 内容区域 */
+.picker__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 var(--space-050);
+  background-color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+}
+
+/* Picker 列容器 */
+.picker__columns {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+}
+
+/* Picker 单列布局 */
+.picker__columns--single {
+  flex-direction: column;
+}
+
+/* Picker 多列布局 */
+.picker__columns--multi {
+  flex-direction: row;
+}
+
+/* Picker 列 */
+.picker__column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+  min-width: 0;
+  position: relative;
+}
+
+/* Picker 选项 */
+.picker__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px var(--space-050);
+  width: 100%;
+  cursor: pointer;
+  transition: all var(--motion-duration-mobile-base) var(--easing-ease-out);
+  position: relative;
+}
+
+/* Picker 选项文字 */
+.picker__option-text {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-02);
+  line-height: var(--line-height-text-02);
+  color: var(--color-black-50);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Picker 选项 - 选中状态 */
+.picker__option--selected {
+  background-color: #f7f7f7; /* --control/select-mask */
+}
+
+.picker__option--selected .picker__option-text {
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-02);
+  line-height: var(--line-height-text-03);
+  color: var(--color-black);
+}
+
+/* Picker 选项 - 单列选中圆角 */
+.picker__columns--single .picker__option--selected {
+  border-radius: var(--radius-020);
+}
+
+/* Picker 选项 - 多列选中圆角 */
+.picker__columns--multi .picker__column:first-child .picker__option--selected {
+  border-radius: var(--radius-020) 0 0 var(--radius-020);
+  border-top-left-radius: var(--radius-040);
+}
+
+.picker__columns--multi .picker__column:last-child .picker__option--selected {
+  border-radius: 0 var(--radius-020) var(--radius-020) 0;
+}
+
+.picker__columns--multi .picker__column:not(:first-child):not(:last-child) .picker__option--selected {
+  border-radius: 0;
+}
+
+/* Picker 渐变遮罩 - 顶部 */
+.picker__mask-top {
+  position: absolute;
+  top: 0;
+  left: var(--space-050);
+  width: calc(100% - var(--space-050) * 2);
+  height: 112px;
+  background: linear-gradient(to bottom, var(--color-white), rgba(255, 255, 255, 0));
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Picker 渐变遮罩 - 底部 */
+.picker__mask-bottom {
+  position: absolute;
+  bottom: 0;
+  left: var(--space-050);
+  width: calc(100% - var(--space-050) * 2);
+  height: 112px;
+  background: linear-gradient(to top, var(--color-white), rgba(255, 255, 255, 0));
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Picker 底部操作区 */
+.picker__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+  padding: var(--space-090) var(--space-050) var(--space-080);
+  background-color: var(--color-white);
+  flex-shrink: 0;
+}
+
+/* Picker 确定按钮 */
+.picker__confirm-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 368px;
+  padding: var(--space-030) var(--space-050);
+  background-color: var(--color-brand-primary);
+  border: none;
+  border-radius: var(--radius-020);
+  cursor: pointer;
+  transition: all var(--motion-duration-mobile-base) var(--easing-ease-out);
+}
+
+.picker__confirm-btn:hover {
+  opacity: 0.9;
+}
+
+.picker__confirm-btn:active {
+  opacity: 0.8;
+}
+
+.picker__confirm-btn-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-02);
+  line-height: var(--line-height-text-03);
+  color: var(--text-always-white);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Picker Home Indicator（移动端虚拟 home 键） */
+.picker__home-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 68px;
+  padding: 0 0 18px;
+  flex-shrink: 0;
+}
+
+.picker__home-indicator-bar {
+  width: 268px;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 200px;
+  flex-shrink: 0;
+}
+
+/* Picker 类型变体 */
+.picker--single-column .picker__columns {
+  flex-direction: column;
+}
+
+.picker--double-column .picker__columns {
+  flex-direction: row;
+}
+
+.picker--triple-column .picker__columns {
+  flex-direction: row;
+}
+
+/* ============================================
+   14. Step 步骤器组件 (Step Component)
+   ============================================ */
+
+/* Step 容器 */
+.step {
+  display: flex;
+  width: 100%;
+}
+
+/* Step 水平布局 */
+.step--horizontal {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-010);
+}
+
+/* Step 垂直布局 */
+.step--vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-040);
+}
+
+/* Step 项 */
+.step__item {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.step--vertical .step__item {
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  gap: var(--space-040);
+}
+
+/* Step 图标容器 */
+.step__icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  position: relative;
+}
+
+.step--horizontal .step__icon {
+  flex-direction: row;
+  width: auto;
+}
+
+/* Step 数字图标 */
+.step__icon-number {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.step__icon-number--green {
+  background-color: var(--control-brand);
+}
+
+.step__icon-number--gray {
+  background-color: var(--color-black);
+}
+
+.step__icon-number-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-family-chinese-medium);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-05);
+  line-height: var(--line-height-text-05);
+  color: var(--text-always-white);
+  text-align: center;
+}
+
+/* Step 完成图标 */
+.step__icon-done {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step__icon-done svg {
+  width: 48px;
+  height: 48px;
+  color: var(--control-brand);
+}
+
+/* Step 其他图标（时间、报错、信息、更多） */
+.step__icon-other {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step__icon-other svg {
+  width: 48px;
+  height: 48px;
+}
+
+.step__icon-other--time svg {
+  color: #10aeff;
+}
+
+.step__icon-other--error svg {
+  color: var(--control-danger);
+}
+
+.step__icon-other--info svg {
+  color: #ffc300;
+}
+
+.step__icon-other--more svg {
+  color: var(--color-black);
+}
+
+/* Step 连接线 */
+.step__line {
+  flex-shrink: 0;
+  height: 1px;
+  background-color: var(--color-black-10);
+}
+
+.step--horizontal .step__line {
+  width: 48px;
+  height: 1px;
+}
+
+.step--vertical .step__line {
+  width: 1px;
+  height: auto;
+  flex: 1 0 0;
+  min-height: var(--space-040);
+}
+
+.step__line--brand {
+  background-color: var(--control-brand);
+}
+
+.step__line--hidden {
+  display: none;
+}
+
+/* Step 内容区域 */
+.step__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-020);
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.step--horizontal .step__content {
+  display: none; /* 水平布局通常不显示内容 */
+}
+
+/* Step 标题和时间容器 */
+.step__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-050);
+  width: 100%;
+}
+
+.step__header--column {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-020);
+}
+
+/* Step 标题 */
+.step__title {
+  flex: 1 0 0;
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-02);
+  line-height: var(--line-height-text-02);
+  color: var(--color-black);
+  white-space: pre-wrap;
+}
+
+.step__item--completed .step__title,
+.step__item--in-progress .step__title {
+  color: var(--color-black);
+}
+
+.step__item--pending .step__title {
+  color: var(--color-black-50);
+}
+
+/* Step 时间 */
+.step__time {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-04);
+  line-height: var(--line-height-text-04);
+  color: var(--color-black-50);
+  text-align: right;
+  flex-shrink: 0;
+  padding: var(--space-010) 0;
+}
+
+/* Step 摘要 */
+.step__summary {
+  font-family: var(--font-family-chinese);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-04);
+  line-height: var(--line-height-text-04);
+  color: var(--color-black-50);
+  white-space: pre-wrap;
+  width: 100%;
+}
+
+.step__item--completed .step__summary,
+.step__item--in-progress .step__summary {
+  color: var(--color-black-50);
+}
+
+.step__item--pending .step__summary {
+  color: var(--color-black-50);
+}
+
+/* Step 状态变体 */
+.step__item--completed {
+  /* 已完成状态 */
+}
+
+.step__item--in-progress {
+  /* 进行中状态 */
+}
+
+.step__item--pending {
+  /* 未开始状态 */
+}
+
+/* Step 流程步骤器（有先后顺序） */
+.step--process {
+  /* 流程步骤器样式 */
+}
+
+/* Step 状态指示器（无逻辑先后关系） */
+.step--indicator {
+  /* 状态指示器样式 */
+}
+
+/* ============================================
+   15. 响应式设计 (Responsive Design)
+   ============================================ */
+
+@media (max-width: 768px) {
+  .btn--large {
+    min-width: 100%;
+    width: 100%;
+  }
+  
+  .btn--middle {
+    min-width: 100%;
+    width: 100%;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-group .btn {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   11. 辅助类 (Utility Classes)
+   ============================================ */
+
+/* 显示/隐藏 */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+/* 文本对齐 */
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* 文本截断 */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 宽度 */
+.w-full {
+  width: 100%;
+}
+
+.w-auto {
+  width: auto;
+}
+
+/* 高度 */
+.h-full {
+  height: 100%;
+}
+
+.h-auto {
+  height: auto;
+}
+
+/* 指针事件 */
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
+/* 用户选择 */
+.select-none {
+  user-select: none;
+}
+
+.select-text {
+  user-select: text;
+}
+
+/* ============================================
+   10. 动效系统 (Motion System)
+   ============================================ */
+
+/* ========== 基础动画关键帧 ========== */
+
+/* 淡入淡出 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* 滑入滑出 */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 缩放 */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* 旋转 */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========== 转场类动效 (Transition Animations) ========== */
+
+/* 模态弹层 - 从底部滑入 */
+.modal-enter {
+  animation: slideUp var(--motion-duration-large-ui-open) var(--easing-ease-out);
+}
+
+.modal-exit {
+  animation: slideDown var(--motion-duration-large-ui-close) var(--easing-ease-in);
+}
+
+/* 蒙层淡入淡出 */
+.overlay-enter {
+  animation: fadeIn var(--motion-duration-mobile-base) var(--easing-linear);
+}
+
+.overlay-exit {
+  animation: fadeOut var(--motion-duration-mobile-base) var(--easing-linear);
+}
+
+/* 页面转场 */
+.page-transition-enter {
+  animation: slideInRight var(--motion-duration-medium-ui-open) var(--easing-ease-in-out);
+}
+
+.page-transition-exit {
+  animation: slideInLeft var(--motion-duration-medium-ui-close) var(--easing-ease-in-out);
+}
+
+/* ========== 展示类动效 (Display Animations) ========== */
+
+/* 淡入展示 */
+.animate-fade-in {
+  animation: fadeIn var(--motion-duration-mobile-medium) var(--easing-ease-out);
+}
+
+/* 滑入展示 */
+.animate-slide-up {
+  animation: slideUp var(--motion-duration-mobile-medium) var(--easing-ease-out);
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft var(--motion-duration-mobile-medium) var(--easing-ease-out);
+}
+
+.animate-slide-in-right {
+  animation: slideInRight var(--motion-duration-mobile-medium) var(--easing-ease-out);
+}
+
+/* 缩放展示 */
+.animate-scale-in {
+  animation: scaleIn var(--motion-duration-mobile-medium) var(--easing-ease-out);
+}
+
+/* ========== 引导类动效 (Guidance Animations) ========== */
+
+/* 脉冲效果 - 吸引注意力 */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s var(--easing-ease-in-out) infinite;
+}
+
+/* 弹跳效果 */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s var(--easing-ease-in-out) infinite;
+}
+
+/* 闪烁效果 */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animate-blink {
+  animation: blink 1.5s var(--easing-linear) infinite;
+}
+
+/* ========== 反馈类动效 (Feedback Animations) ========== */
+
+/* 点击反馈 - 缩放 */
+@keyframes clickFeedback {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-click-feedback {
+  animation: clickFeedback var(--motion-duration-mobile-small) var(--easing-ease-out);
+}
+
+/* 加载旋转 */
+.animate-spin {
+  animation: rotate 1s var(--easing-linear) infinite;
+}
+
+/* 下拉刷新 */
+@keyframes pullRefresh {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-pull-refresh {
+  animation: pullRefresh var(--motion-duration-mobile-medium) var(--easing-ease-out);
+}
+
+/* ========== 过渡工具类 (Transition Utilities) ========== */
+
+/* 基础过渡 */
+.transition-all {
+  transition: all var(--transition-base);
+}
+
+.transition-colors {
+  transition: color var(--motion-duration-mobile-small) var(--easing-linear),
+              background-color var(--motion-duration-mobile-small) var(--easing-linear),
+              border-color var(--motion-duration-mobile-small) var(--easing-linear);
+}
+
+.transition-transform {
+  transition: transform var(--transition-base);
+}
+
+.transition-opacity {
+  transition: opacity var(--motion-duration-mobile-base) var(--easing-linear);
+}
+
+/* 缓动曲线工具类 */
+.ease-linear {
+  transition-timing-function: var(--easing-linear);
+}
+
+.ease-out {
+  transition-timing-function: var(--easing-ease-out);
+}
+
+.ease-in {
+  transition-timing-function: var(--easing-ease-in);
+}
+
+.ease-in-out {
+  transition-timing-function: var(--easing-ease-in-out);
+}
+
+/* ========== 设备响应式动效 ========== */
+
+/* 移动设备（默认） */
+@media (max-width: 768px) {
+  .motion-duration-small {
+    transition-duration: var(--motion-duration-mobile-small);
+  }
+  
+  .motion-duration-base {
+    transition-duration: var(--motion-duration-mobile-base);
+  }
+  
+  .motion-duration-medium {
+    transition-duration: var(--motion-duration-mobile-medium);
+  }
+  
+  .motion-duration-large {
+    transition-duration: var(--motion-duration-mobile-large);
+  }
+}
+
+/* 平板设备 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .motion-duration-small {
+    transition-duration: var(--motion-duration-tablet-small);
+  }
+  
+  .motion-duration-base {
+    transition-duration: var(--motion-duration-tablet-base);
+  }
+  
+  .motion-duration-medium {
+    transition-duration: var(--motion-duration-tablet-medium);
+  }
+  
+  .motion-duration-large {
+    transition-duration: var(--motion-duration-tablet-large);
+  }
+}
+
